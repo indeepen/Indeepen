@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CreateFragment extends Fragment {
+public class CreateFragment extends Fragment implements MainTab {
 
 
     public CreateFragment() {
@@ -29,5 +30,8 @@ public class CreateFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public int getContainer() {
+        return 0;
+    }
 }

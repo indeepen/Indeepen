@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.MainActivity;
+import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotificationFragment extends Fragment implements MainActivity.OnKeyBackPressedListener, CallbackListener.OnGoActivityListener {
+public class NotificationFragment extends Fragment implements MainTab, MainActivity.OnKeyBackPressedListener, CallbackListener.OnGoActivityListener {
     FragmentManager mFM;
     boolean isFirst = false;
 
@@ -91,5 +92,10 @@ public class NotificationFragment extends Fragment implements MainActivity.OnKey
                 break;
             }
         }
+    }
+
+    @Override
+    public int getContainer() {
+        return R.id.container_notify;
     }
 }

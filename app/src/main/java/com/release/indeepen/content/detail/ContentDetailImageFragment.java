@@ -21,7 +21,7 @@ import com.release.indeepen.content.art.ContentImageData;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContentDetailFragment extends Fragment implements View.OnClickListener {
+public class ContentDetailImageFragment extends Fragment implements View.OnClickListener {
 
     ContentImageData mData;
     ListView vList;
@@ -29,7 +29,7 @@ public class ContentDetailFragment extends Fragment implements View.OnClickListe
     TextView vTextArtist;
     SimpleImageAdapter mAdapter;
 
-    public ContentDetailFragment() {
+    public ContentDetailImageFragment() {
         // Required empty public constructor
     }
 
@@ -76,7 +76,6 @@ public class ContentDetailFragment extends Fragment implements View.OnClickListe
         for (int idx = 0; idx < mData.arrIMGs.size(); idx++) {
             mAdapter.add(mData.arrIMGs.get(idx));
         }
-
     }
 
     @Override

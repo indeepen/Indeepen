@@ -43,7 +43,7 @@ public class ContentSingListFragment extends Fragment {
     }
 
     private void init() {
-        for (int idx = 0; idx < 5; idx++) {
+        for (int idx = 0; idx < 11; idx++) {
             ContentImageData mData = new ContentImageData();
             mData.nArtType = DefineContentType.SINGLE_ART_TYPE_PAINT;
             mData.thProfile = DefineTest.ARR_IMG2[idx % 8];

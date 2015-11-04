@@ -40,6 +40,8 @@ public class ContentSingleListAdapter extends BaseAdapter {
 
             case DefineContentType.SINGLE_ART_TYPE_VIDEO:
                 return DefineContentType.SINGLE_YOUTUBE;
+            case DefineContentType.SINGLE_ART_TYPE_CULTURE:
+                return DefineContentType.SINGLE_CULTURE;
             default:
                 return -1;
         }
@@ -72,9 +74,9 @@ public class ContentSingleListAdapter extends BaseAdapter {
         switch (nType) {
             case DefineContentType.SINGLE_IMAGE:
             default: {
-                ImageSingleListView view = (ImageSingleListView) convertView;
+                SingleImageView view = (SingleImageView) convertView;
                 if (null == view) {
-                    view = new ImageSingleListView(parent.getContext());
+                    view = new SingleImageView(parent.getContext());
                 }
                 view.setData((ContentImageData) items.get(position));
 

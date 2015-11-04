@@ -1,6 +1,8 @@
 package com.release.indeepen.content.singleList;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
@@ -9,41 +11,39 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.DefineTest;
+import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
 import com.release.indeepen.blog.BlogFragment;
-import com.release.indeepen.blog.BlogMainFragment;
 import com.release.indeepen.content.art.ContentImageData;
 import com.release.indeepen.content.comment.CommentListActivity;
 import com.release.indeepen.content.detail.ContentDetailActivity;
-import com.release.indeepen.content.detail.ContentDetailFragment;
+import com.release.indeepen.content.detail.ContentDetailImageFragment;
 
 /**
  * Created by lyo on 2015-11-01.
  */
-public class ImageSingleListView extends LinearLayout implements View.OnClickListener {
+public class SingleImageView extends LinearLayout implements View.OnClickListener {
 
     ImageView vThPro, vIMGContent, vIMGEmotion;
     TextView vTextLike, vTextComm, vTextOption, vTextArtist, vTextDate, vText, vTextCommUser1, vTextCommUser2, vTextCommCon1, vTextCommCon2;
     ContentImageData mData;
-    ContentDetailFragment mContentDetailFragment;
     BlogFragment mBlogF;
     // Bundle mBundle;
 
-    public ImageSingleListView(Context context) {
+    public SingleImageView(Context context) {
         super(context);
         init();
     }
 
-    public ImageSingleListView(Context context, AttributeSet attrs) {
+    public SingleImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
-        inflate(getContext(), R.layout.view_image_single_list, this);
+        inflate(getContext(), R.layout.view_single_image, this);
         vThPro = (ImageView) findViewById(R.id.img_image_single_thpro);
         vIMGContent = (ImageView) findViewById(R.id.img_image_single_contents);
         vIMGEmotion = (ImageView) findViewById(R.id.img_image_single_emotion);
@@ -58,8 +58,6 @@ public class ImageSingleListView extends LinearLayout implements View.OnClickLis
         vTextCommUser2 = (TextView) findViewById(R.id.text_image_single_nick2);
         vTextCommCon1 = (TextView) findViewById(R.id.text_image_single_comm1);
         vTextCommCon2 = (TextView) findViewById(R.id.text_image_single_comm2);
-
-        mContentDetailFragment = new ContentDetailFragment();
         mBlogF = new BlogFragment();
         if (null != mData) {
             //  mBundle = new Bundle();
@@ -80,36 +78,13 @@ public class ImageSingleListView extends LinearLayout implements View.OnClickLis
         vTextCommCon1.setOnClickListener(this);
         vTextCommCon2.setOnClickListener(this);
 
-/*        vIMGContent.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//              if(null != CallbackListener.mActivityListener){
-//                    Intent mIntent = new Intent(getContext(), ContentSingleListActivity.class);
-//                    mIntent.putExtra(DefineContentType.BUNDLE_DATA_DETAIL_IMAGE, mData);
-//                    CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.CALLBACK_TO_DETAIL_IMGAE);
-
-                Intent mIntent = new Intent(getContext(), ContentDetailActivity.class);
-                mIntent.putExtra(DefineContentType.BUNDLE_DATA_DETAIL_IMAGE, mData);
-
-                getContext().startActivity(mIntent);
-
-
-//              if(null != CallbackListener.mListener){
-//                    switch(mData.nArtType) {
-//                        case DefineContentType.SINGLE_IMAGE : {
-//
-//                           // CallbackListener.mListener.onReplaceFragment(mContentDetailFragment, DefineContentType.CALLBACK_TO_DETAIL_IMGAE, mData);
-//                        }
-//                    }
-//                }
-            }
-        });*/
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.img_image_single_contents: {
+            case R.id.img_image_single_contents:
+            case R.id.text_image_single_text:{
                 Intent mIntent = new Intent(getContext(), ContentDetailActivity.class);
                 mIntent.putExtra(DefineContentType.BUNDLE_DATA_DETAIL_IMAGE, mData);
                 getContext().startActivity(mIntent);
@@ -117,9 +92,11 @@ public class ImageSingleListView extends LinearLayout implements View.OnClickLis
             }
             case R.id.text_image_single_artist:
             case R.id.img_image_single_thpro: {
-                if (null != CallbackListener.mFragnetListener) {
-                    CallbackListener.mFragnetListener.onReplaceFragment(new BlogMainFragment(), DefineContentType.CALLBACK_TO_BLOG);
-                }
+                Intent mIntent = new Intent(getContext(), MainActivity.class);
+                mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.TYPE_ON_NEW_REPLACE);
+                mIntent.putExtra(DefineContentType.KEY_ON_NEW_WHERE, DefineContentType.TO_BLOG);
+                //mIntent.putExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL, ); // 이동시 다시 받아올 Data URL
+                getContext().startActivity(mIntent);
                 break;
             }
             case R.id.text_image_single_like: {
@@ -132,6 +109,10 @@ public class ImageSingleListView extends LinearLayout implements View.OnClickLis
                 getContext().startActivity(mIntent);
                 break;
             }
+            case R.id.text_image_single_option:{
+                onOptionDialog();
+                break;
+            }
 
         }
     }
@@ -141,6 +122,60 @@ public class ImageSingleListView extends LinearLayout implements View.OnClickLis
         mData = data;
         vThPro.setImageResource(data.thProfile);
         vIMGContent.setImageResource(DefineTest.ARR_IMG[(int) (Math.random() * 10) % 8]);
+    }
+
+    public void onOptionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        //builder.setIcon(android.R.drawable.ic_dialog_alert);
+        // builder.setTitle("List Dialog");
+        builder.setItems(new String[]{"싫어요", "공유", "수정", "삭제"}, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent mIntent;
+                switch (which) {
+                    case 0: {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        //builder.setIcon(android.R.drawable.ic_dialog_alert);
+                        //builder.setTitle("Alert Dialog");
+                        builder.setMessage("이 게시물을 정말 싫어요 하시겠습니까?");
+                        builder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "봐줌", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                        builder.setNeutralButton("싫어요", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "넌 신고", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        builder.setCancelable(false);
+                        builder.create().show();
+                        break;
+                    }
+                    case 1: {
+
+                        break;
+                    }
+                    case 2: {
+                        //mIntent = new Intent(getContext(), MediaSingleChoiceActivity.class);
+                        //mIntent.putExtra(DefineContentType.SELECT_IMAGE, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
+                        //startActivity(mIntent);
+                        break;
+                    }
+                    case 3: {
+                       // mIntent = new Intent(getContext(), MediaSingleChoiceActivity.class);
+                        //mIntent.putExtra(DefineContentType.SELECT_IMAGE, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
+                       // startActivity(mIntent);
+                        break;
+                    }
+                }
+
+            }
+        });
+        builder.create().show();
     }
 
 

@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CultureFragment extends Fragment {
+public class CultureFragment extends Fragment implements MainTab {
 
 
     public CultureFragment() {
@@ -29,5 +30,8 @@ public class CultureFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public int getContainer() {
+        return 0; // frameLayout 아이디로 수정
+    }
 }

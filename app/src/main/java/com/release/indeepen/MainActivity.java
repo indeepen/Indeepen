@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.release.indeepen.blog.BlogFragment;
 import com.release.indeepen.blog.BlogMainFragment;
+import com.release.indeepen.content.detail.ContentDetailImageFragment;
 import com.release.indeepen.content.singleList.ContentSingListFragment;
 import com.release.indeepen.create.CreateFragment;
 import com.release.indeepen.culture.CultureFragment;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
+        Toast.makeText(MainActivity.this, "메인확인", Toast.LENGTH_SHORT).show();
         String sGetURL = null;
         Serializable mPutData = null;
         Serializable mGetData = null;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
                     goFragment(intent, mGetData);
                     break;
                 }
-                case DefineContentType.TYPE_ON_NEW_ACTIVITI:{ // 스타트 액티비티 요청
+                case DefineContentType.TYPE_ON_NEW_ACTIVITY:{ // 스타트 액티비티 요청
                     //goActivity(intent.getSerializableExtra(DefineContentType.KEY_ON_NEW_ACTIVITY_DATA));
                     break;
                 }
@@ -141,10 +142,10 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
 
         switch (intent.getIntExtra(DefineContentType.KEY_ON_NEW_WHERE , -1)){
             case DefineContentType.TO_SINGLE_LIST:
-                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((BlogFragment)fragment).getContainer(), new ContentSingListFragment()).commit();
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab)fragment).getContainer(), new ContentSingListFragment()).commitAllowingStateLoss();
                 break;
             case DefineContentType.TO_BLOG: {
-                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((BlogFragment)fragment).getContainer(), new BlogMainFragment()).commit();
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab)fragment).getContainer(), new BlogMainFragment()).commitAllowingStateLoss();
                 break;
             }
             /*case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND: {
@@ -154,6 +155,22 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
                 fragment.getChildFragmentManager().beginTransaction().replace(((BlogFragment) fragment).getContainer(), new BlogMainFragment()).commit();
                 break;
             }*/
+            case DefineContentType.TO_DETAIL_IMGAE:{
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab)fragment).getContainer(), new ContentDetailImageFragment()).commitAllowingStateLoss();
+                break;
+            }
+            case DefineContentType.TO_DETAIL_MUSIC_VIDEO:{
+                break;
+            }
+            case DefineContentType.TO_DETAIL_MUSIC:{
+                break;
+            }
+            case DefineContentType.TO_DETAIL_YOUTUBE:{
+                break;
+            }
+            case DefineContentType.TO_DETAIL_CULTURE:{
+                break;
+            }
         }
 
     }

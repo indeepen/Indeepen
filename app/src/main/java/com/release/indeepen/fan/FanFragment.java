@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.MainActivity;
+import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
 import com.release.indeepen.content.singleList.ContentSingListFragment;
 
@@ -18,7 +19,7 @@ import com.release.indeepen.content.singleList.ContentSingListFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FanFragment extends Fragment implements CallbackListener.OnReplaceFragmentListener, MainActivity.OnKeyBackPressedListener {
+public class FanFragment extends Fragment implements MainTab, CallbackListener.OnReplaceFragmentListener, MainActivity.OnKeyBackPressedListener {
 
     FragmentManager mFM;
     ContentSingListFragment mSingleListF;
@@ -89,5 +90,10 @@ public class FanFragment extends Fragment implements CallbackListener.OnReplaceF
                 activity.onBackPressed();
             }
         }
+    }
+
+    @Override
+    public int getContainer() {
+        return R.id.container_fan;
     }
 }

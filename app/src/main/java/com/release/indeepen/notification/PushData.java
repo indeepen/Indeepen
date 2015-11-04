@@ -7,7 +7,8 @@ import com.release.indeepen.user.UserData;
  */
 public class PushData extends UserData {
     int nPushType;
-    int thIMG;
+    int nContentType;
+    int thPro;
     String sMSG;
     long dDate;
     boolean isConfirm;

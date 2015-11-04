@@ -5,19 +5,10 @@
     android:background="@android:color/white"
     tools:context="com.release.indeepen.blog.BlogFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container_blog"></FrameLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
+        android:id="@+id/container_blog"></FrameLayout>
 
 
 </FrameLayout>

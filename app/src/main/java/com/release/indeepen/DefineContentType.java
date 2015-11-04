@@ -16,6 +16,7 @@ public interface DefineContentType {
     int TO_DETAIL_MUSIC = 3;
     int TO_DETAIL_MUSIC_VIDEO = 4;
     int TO_DETAIL_YOUTUBE = 5;
+    int TO_DETAIL_CULTURE = 6;
 
     String FRAGMENT_SINGLE_LIST = "singleList";
     String FRAGMENT_DETAIL_IMAGE = "detailIMG";
@@ -26,7 +27,7 @@ public interface DefineContentType {
 
     String KEY_ON_NEW_REQUEST = "REQUEST";
     int TYPE_ON_NEW_REPLACE = 0;
-    int TYPE_ON_NEW_ACTIVITI = 1;
+    int TYPE_ON_NEW_ACTIVITY = 1;
     int TYPE_ON_NEW_BACKGROUND = 2;
 
     /* 디바이스 내 사진 선택 종류*/
@@ -61,20 +62,21 @@ public interface DefineContentType {
     int COMMENT_TYPE_COUNT = 1;
 
     /* Single List 컨텐츠 관련 정의*/
-    int SINGLE_TYPE_COUNT = 4;
+    int SINGLE_TYPE_COUNT = 5;
 
     int SINGLE_IMAGE = 0;
     int SINGLE_MUSIC = 1;
     int SINGLE_VIDEO = 2;
     int SINGLE_YOUTUBE = 3;
+    int SINGLE_CULTURE = 4;
 
-    int SINGLE_ART_TYPE_PAINT = 0;
-    int SINGLE_ART_TYPE_PICTURE = 1;
-    int SINGLE_ART_TYPE_MUSIC_PICTURE = 2;
-    int SINGLE_ART_TYPE_MUSIC_VIDEO = 3;
-    int SINGLE_ART_TYPE_MUSIC = 4;
-    int SINGLE_ART_TYPE_VIDEO = 5;
-    //int SINGLE_ART_TYPE_CULTURE = 0;
+    int SINGLE_ART_TYPE_PAINT = 10;
+    int SINGLE_ART_TYPE_PICTURE = 11;
+    int SINGLE_ART_TYPE_MUSIC_PICTURE = 12;
+    int SINGLE_ART_TYPE_MUSIC_VIDEO = 13;
+    int SINGLE_ART_TYPE_MUSIC = 14;
+    int SINGLE_ART_TYPE_VIDEO = 15;
+    int SINGLE_ART_TYPE_CULTURE = 16;
     //........
 
 

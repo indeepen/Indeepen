@@ -8,16 +8,16 @@ import com.release.indeepen.R;
 public class ContentDetailActivity extends AppCompatActivity {
 
 
-    ContentDetailFragment vfragment;
+    ContentDetailImageFragment vfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_detail);
 
-        vfragment = new ContentDetailFragment();
+        vfragment = new ContentDetailImageFragment();
         vfragment.setArguments(getIntent().getExtras());
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_single_list, vfragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_single_content, vfragment).commit();
     }
 }

@@ -1,25 +1,21 @@
 package com.release.indeepen.blog;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.release.indeepen.CallbackListener;
-import com.release.indeepen.DefineContentType;
 import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
+import com.release.indeepen.MainTab;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlogFragment extends Fragment implements MainActivity.OnKeyBackPressedListener {
+public class BlogFragment extends Fragment implements MainTab, MainActivity.OnKeyBackPressedListener {
 
     FragmentManager mFM;
     boolean isFirst = false;
