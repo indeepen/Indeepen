@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
@@ -17,17 +19,10 @@ import com.release.indeepen.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentActionListener, MainActivity.OnKeyBackPressedListener, CallbackListener.OnReplaceFragmentListener {
+public class BlogFragment extends Fragment implements MainActivity.OnKeyBackPressedListener {
 
     FragmentManager mFM;
     boolean isFirst = false;
-
-    @Override
-    public void onFragmentActionListener(Fragment fragment, Intent intent, int type) {
-        if (DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND == type) {
-            startActivity(intent);
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,10 +55,10 @@ public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentAc
     public void onResume() {
         super.onResume();
         ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
-        CallbackListener.mFragnetListener = this;
+       // CallbackListener.mFragnetListener = this;
     }
 
-    @Override
+  /*  @Override
     public void onReplaceFragment(Fragment fragment, int Type) {
         switch (Type) {
 
@@ -80,7 +75,7 @@ public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentAc
                 break;
             }
         }
-    }
+    }*/
 
     @Override
     public void onBack() {
@@ -94,4 +89,9 @@ public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentAc
             }
         }
     }
+
+    public int getContainer(){
+        return R.id.container_blog;
+    }
+
 }

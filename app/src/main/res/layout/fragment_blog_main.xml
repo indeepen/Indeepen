@@ -7,24 +7,12 @@
     android:weightSum="1"
     tools:context="com.release.indeepen.blog.BlogFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
+
+    <com.release.indeepen.content.tripleGrid.HeaderGridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/grid_item"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp">
-
-
-        <ListView
-            android:id="@+id/list_blog"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
+        android:layout_alignParentStart="true"
+        android:numColumns="3" />
 </RelativeLayout>

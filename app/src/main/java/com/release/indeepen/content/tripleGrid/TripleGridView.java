@@ -21,12 +21,12 @@ import com.release.indeepen.content.singleList.ContentSingListFragment;
 /**
  * Created by Tacademy on 2015-10-30.
  */
-public class TripleGridView extends FrameLayout implements View.OnClickListener {
+public class TripleGridView extends FrameLayout{
 
 
-    TripleGridAdapter mAdapter;
+    //TripleGridAdapter mAdapter;
     GridView vTripleGrid;
-    Button vBtnArt, vBtnFavorite, vBtnMyCulture, vBtnCollabo;
+
     int cellWidth;
     int cellHeight;
     ContentData mData;
@@ -49,22 +49,12 @@ public class TripleGridView extends FrameLayout implements View.OnClickListener 
 
     private void init() {
         inflate(getContext(), R.layout.view_triple_grid, this);
-        vTripleGrid = (GridView) findViewById(R.id.grid_item);
-        vBtnArt = (Button) findViewById(R.id.btn_tab_art);
-        vBtnFavorite = (Button) findViewById(R.id.btn_tab_favorite);
-        vBtnMyCulture = (Button) findViewById(R.id.btn_tab_culture);
-        vBtnCollabo = (Button) findViewById(R.id.btn_tab_collabo);
+       /* vTripleGrid = (GridView) findViewById(R.id.grid_item);
 
-        //mListener = (MainActivity)mContext;
-
-        vBtnArt.setOnClickListener(this);
-        vBtnFavorite.setOnClickListener(this);
-        vBtnMyCulture.setOnClickListener(this);
-        vBtnCollabo.setOnClickListener(this);
 
         mAdapter = new TripleGridAdapter(getContext());
         vTripleGrid.setAdapter(mAdapter);
-
+*/
         mSinglListFragment = new ContentSingListFragment();
 
 
@@ -81,54 +71,14 @@ public class TripleGridView extends FrameLayout implements View.OnClickListener 
             }
         });
 
-        test1();
+
     }
 
     public void setData(ContentData data) {
         mData = data;
     }
 
-    @Override
-    public void onClick(View v) {
-        mAdapter.removeAll();
-        switch (v.getId()) {
 
-            case R.id.btn_tab_art:
-                test1();
-                break;
-            case R.id.btn_tab_favorite:
-                test2();
-
-                break;
-            case R.id.btn_tab_culture:
-                Intent mIntent = new Intent(getContext(), BlogInCultureActivity.class);
-                CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_FIXD_INFO);
-                break;
-            case R.id.btn_tab_collabo:
-                Toast.makeText(getContext(), "서비스 준비중입니다.", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                return;
-        }
-    }
-
-    void test1() {
-
-        for (int idx = 0; idx < 20; idx++) {
-            ContentData data = new ContentData();
-            data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
-            mAdapter.add(data);
-        }
-    }
-
-    void test2() {
-
-        for (int idx = 0; idx < 8; idx++) {
-            ContentData data = new ContentData();
-            data.thIMG = DefineTest.ARR_IMG2[idx];
-            mAdapter.add(data);
-        }
-    }
 
     /*  public void setItemData(String imgURL) {
         this.imgURL = imgURL;

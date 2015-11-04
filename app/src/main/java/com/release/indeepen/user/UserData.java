@@ -9,8 +9,14 @@ public class UserData implements Serializable {
 
     public String sArtist;
     public int thProfile;
+    public int thBackground;
+    public String sEmail;
+    public String sPhoneNum;
+    public String sIntrodution;
+    public String sName;
+
     public int nUserkey;
-    public int nBlogKey;
+    public int[] nBlogKey;
     public int nSearchKey;
 
 

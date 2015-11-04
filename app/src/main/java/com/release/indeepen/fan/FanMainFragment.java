@@ -31,8 +31,7 @@ public class FanMainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fan_main, container, false);
         mFM = getChildFragmentManager();
-        mFM.beginTransaction().add(R.id.container_fan, new ContentSingListFragment(), DefineContentType.FRAGMENT_SINGLE_LIST).commit();
-        mSLFragment = (ContentSingListFragment) mFM.findFragmentByTag(DefineContentType.FRAGMENT_SINGLE_LIST);
+        mFM.beginTransaction().add(R.id.container_fan, new ContentSingListFragment()).commit();
 
         return view;
     }

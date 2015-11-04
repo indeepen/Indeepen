@@ -8,31 +8,40 @@ public interface DefineContentType {
     int CALLBACK_TO_BLOG = 0;
     int CALLBACK_TO_SINGLE_LIST = 1;
 
-    /* 콜백 타입 관련 정의*/
+    /* 싱글 태스크 관리 및 요청 정보*/
     int TO_SINGLE_LIST = 0;
+    int TO_BLOG = 1;
 
-    int TO_DETAIL_IMGAE = 1;
-    int TO_DETAIL_MUSIC = 2;
-    int TO_DETAIL_MUSIC_VIDEO = 3;
-    int TO_DETAIL_YOUTUBE = 4;
+    int TO_DETAIL_IMGAE = 2;
+    int TO_DETAIL_MUSIC = 3;
+    int TO_DETAIL_MUSIC_VIDEO = 4;
+    int TO_DETAIL_YOUTUBE = 5;
 
     String FRAGMENT_SINGLE_LIST = "singleList";
     String FRAGMENT_DETAIL_IMAGE = "detailIMG";
 
-/* 싱글 태스크 관리 및 요청 정보*/
+    String KEY_ON_NEW_PUT_DATA = "PUT_DATA"; // 서버에 업데이트할 데이터들 (업데이트 URL 포함)
+    String KEY_ON_NEW_GET_DATA_URL = "GET_DATA_URL"; // 서버에게서 받아오는 데이터 URL
+
 
     String KEY_ON_NEW_REQUEST = "REQUEST";
     int TYPE_ON_NEW_REPLACE = 0;
     int TYPE_ON_NEW_ACTIVITI = 1;
+    int TYPE_ON_NEW_BACKGROUND = 2;
 
-    String KEY_ON_NEW_REPLACE = "REPLACE";
-    String KEY_ON_NEW_ACTIVITI = "ACTIVITY";
+    /* 디바이스 내 사진 선택 종류*/
+    String SELECT_IMAGE = "selectedPicture";
 
-    String KEY_ON_NEW_FRAGMENT_DATA = "FRAGMENT_DATA";
-    String KEY_ON_NEW_ACTIVITY_DATA = "ACTIVITY_DATA";
+    int ACTIVITY_TYPE_PROFILE_BACKGROUND = 3;
+    int ACTIVITY_TYPE_PROFILE_IMG = 4;
+    int ACTIVITY_TYPE_EXPANED_IMG = 5;
+    int ACTIVITY_TYPE_FIXD_INFO = 6;
+
+    String KEY_ON_NEW_WHERE = "WHERE";
 
 
-    /* 메인 탭 관련 정의*/
+
+/* 메인 탭 관련 정의*/
     String MAIN_TAB_CULTURE = "culture";
     String MAIN_TAB_FAN = "fan";
     String MAIN_TAB_CREATE = "create";
@@ -119,13 +128,6 @@ public interface DefineContentType {
     String BLOG_MY_CULTURE = "My 문화";
     String BLOG_LIKE_CULTURE = "좋아요 문화";
 
-    /* 디바이스 내 사진 선택 종류*/
-    String SELECT_IMAGE = "selectedPicture";
-
-    int ACTIVITY_TYPE_PROFILE_BACKGROUND = 0;
-    int ACTIVITY_TYPE_PROFILE_IMG = 1;
-    int ACTIVITY_TYPE_EXPANED_IMG = 2;
-    int ACTIVITY_TYPE_FIXD_INFO = 3;
 
 
 }

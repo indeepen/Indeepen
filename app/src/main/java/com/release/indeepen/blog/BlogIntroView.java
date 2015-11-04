@@ -12,22 +12,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
+import com.release.indeepen.DefineTest;
 import com.release.indeepen.R;
 import com.release.indeepen.blog.simpleList.SimpleSingleUserListActivity;
 import com.release.indeepen.blog.simpleList.SimpleTabUserListActivity;
+import com.release.indeepen.content.ContentData;
 import com.release.indeepen.create.selectMedia.MediaSingleChoiceActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlogIntroView extends FrameLayout {
+public class BlogIntroView extends FrameLayout{
 
-    static ImageView vIMGProBack, vthPro;
+    ImageView vIMGProBack, vthPro;
+    Button vBtnArt, vBtnFavorite, vBtnMyCulture, vBtnCollabo;
     boolean isClick = false;
 
-    private OnFragmentActionListener mListener;
+  //  private OnFragmentActionListener mListener;
 
     public BlogIntroView(Context context) {
         super(context);
@@ -39,15 +44,26 @@ public class BlogIntroView extends FrameLayout {
         init();
     }
 
-    public void setOnFragmentAction(OnFragmentActionListener listener) {
+/*    public void setOnFragmentAction(OnFragmentActionListener listener) {
         mListener = listener;
-    }
+    }*/
 
     private void init() {
         inflate(getContext(), R.layout.view_blog_intro, this);
-
+/*
         vIMGProBack = (ImageView) findViewById(R.id.img_blog_background);
         vthPro = (ImageView) findViewById(R.id.img_blog_thProfile);
+        vBtnArt = (Button) findViewById(R.id.btn_tab_art);
+        vBtnFavorite = (Button) findViewById(R.id.btn_tab_favorite);
+        vBtnMyCulture = (Button) findViewById(R.id.btn_tab_culture);
+        vBtnCollabo = (Button) findViewById(R.id.btn_tab_collabo);
+        vBtnArt.setOnClickListener(this);
+        vBtnFavorite.setOnClickListener(this);
+        vBtnMyCulture.setOnClickListener(this);
+        vBtnCollabo.setOnClickListener(this);
+
+
+
         vthPro.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,13 +101,13 @@ public class BlogIntroView extends FrameLayout {
                 }
             }
         });
-
+        test1();*/
     }
 
     public void setData(BlogIntroData data) {
 
     }
-
+/*
     public void onBackgroundDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         //builder.setIcon(android.R.drawable.ic_dialog_alert);
@@ -120,26 +136,26 @@ public class BlogIntroView extends FrameLayout {
                 Intent mIntent;
                 switch (which) {
                     case 0: {
-                       /* mIntent = new Intent(getContext(), UserInfoActivity.class);
+                       *//* mIntent = new Intent(getContext(), UserInfoActivity.class);
                         if(null != CallbackListener.mActivityListener) {
                             CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_FIXD_INFO);
                         }
-                        break;*/
+                        break;*//*
                     }
                     case 1: {
-                       /* mIntent = new Intent(getContext(), ExpandImageActivity.class);
+                       *//* mIntent = new Intent(getContext(), ExpandImageActivity.class);
                         if(null != CallbackListener.mActivityListener) {
                             CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_EXPANED_IMG);
                         }
-                        break;*/
+                        break;*//*
                     }
                     case 2: {
-                       /* mIntent = new Intent(getContext(), MediaSingleChoiceActivity.class);
+                       *//* mIntent = new Intent(getContext(), MediaSingleChoiceActivity.class);
                         mIntent.putExtra(DefineContentType.SELECT_IMAGE, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
                         if(null != CallbackListener.mActivityListener) {
                             CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
                         }
-                        break;*/
+                        break;*//*
                     }
                 }
 
@@ -158,16 +174,48 @@ public class BlogIntroView extends FrameLayout {
         void onFragmentActionListener(Fragment fragment, Intent intent, int type);
     }
 
+    @Override
+    public void onClick(View v) {
+        mAdapter.removeAll();
+        switch (v.getId()) {
 
-    /*public static void setProfileBack(String path){
-        Uri uri = Uri.fromFile(new File(path));
-        ImageLoader.getInstance().displayImage(uri.toString(), vIMGProBack);
+            case R.id.btn_tab_art:
+                test1();
+                break;
+            case R.id.btn_tab_favorite:
+                test2();
+
+                break;
+            case R.id.btn_tab_culture:
+                Intent mIntent = new Intent(getContext(), BlogInCultureActivity.class);
+                CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_FIXD_INFO);
+                break;
+            case R.id.btn_tab_collabo:
+                Toast.makeText(getContext(), "서비스 준비중입니다.", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return;
+        }
     }
 
-    public static void setProfileIMG(String path){
-        Uri uri = Uri.fromFile(new File(path));
-        ImageLoader.getInstance().displayImage(uri.toString(), vthPro);
+    void test1() {
+
+        for (int idx = 0; idx < 20; idx++) {
+            ContentData data = new ContentData();
+            data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
+            mAdapter.add(data);
+        }
+    }
+
+    void test2() {
+
+        for (int idx = 0; idx < 8; idx++) {
+            ContentData data = new ContentData();
+            data.thIMG = DefineTest.ARR_IMG2[idx];
+            mAdapter.add(data);
+        }
     }*/
+
 
 
 }

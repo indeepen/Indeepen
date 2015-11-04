@@ -81,17 +81,27 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
                 switch (nCase) {
                     case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND: {
                         String path = getSingleImage();
-                        Intent intent = new Intent(MediaSingleChoiceActivity.this, MainActivity.class);
-                        intent.putExtra("path", path);
-                        startActivity(intent);
-                        //BlogIntroView.setProfileBack(path);
+
+                        Intent mIntent = new Intent(MediaSingleChoiceActivity.this, MainActivity.class);
+                        mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND);
+                        mIntent.putExtra(DefineContentType.KEY_ON_NEW_PUT_DATA, path); // 서버에 요청할 Data URL
+                        //mIntent.putExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL, ); // 이동시 다시 받아올 Data URL
+                        startActivity(mIntent);
                         finish();
+                        break;
                     }
                     case DefineContentType.ACTIVITY_TYPE_PROFILE_IMG: {
                         String path = getSingleImage();
 
-                        //BlogIntroView.setProfileIMG(path);
+                        Intent mIntent = new Intent(MediaSingleChoiceActivity.this, MainActivity.class);
+                       // mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
+                       // mIntent.putExtra(DefineContentType.KEY_ON_NEW_WHERE, DefineContentType.TO_BLOG);
+                        mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.ACTIVITY_TYPE_PROFILE_IMG);
+                        mIntent.putExtra(DefineContentType.KEY_ON_NEW_PUT_DATA, path); // 서버에 요청할 Data URL
+                        //mIntent.putExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL, ); // 이동시 다시 받아올 Data URL
+                        startActivity(mIntent);
                         finish();
+                        break;
                     }
                 }
 

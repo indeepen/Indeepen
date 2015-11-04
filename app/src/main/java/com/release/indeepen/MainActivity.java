@@ -3,6 +3,7 @@ package com.release.indeepen;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.release.indeepen.blog.BlogFragment;
+import com.release.indeepen.blog.BlogMainFragment;
+import com.release.indeepen.content.singleList.ContentSingListFragment;
 import com.release.indeepen.create.CreateFragment;
 import com.release.indeepen.culture.CultureFragment;
 import com.release.indeepen.fan.FanFragment;
@@ -77,26 +80,81 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
+        String sGetURL = null;
+        Serializable mPutData = null;
+        Serializable mGetData = null;
+
+
         if (null != intent) {
-            Toast.makeText(MainActivity.this, intent.getStringExtra("path"), Toast.LENGTH_SHORT).show();
-            /*switch(intent.getIntExtra(DefineContentType.KEY_ON_NEW_REQUEST,-1)){
+
+            mPutData = intent.getStringExtra(DefineContentType.KEY_ON_NEW_PUT_DATA);
+            sGetURL = intent.getStringExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL);
+
+            if(null != mPutData) {
+               // 서버에게 업데이트할 데이터 보내는 작업
+
+            }
+            if(null != sGetURL){
+                // 페이지 이동시 페이지에 보일 Data 서버로부터 가져오는 작업
+               // mGetData = ;  // json 파싱한 결과물
+            }
+
+            switch(intent.getIntExtra(DefineContentType.KEY_ON_NEW_REQUEST,-1)){
                 case DefineContentType.TYPE_ON_NEW_REPLACE:{ // 리플레이스 요청
-                    goActivity(intent.getSerializableExtra(DefineContentType.KEY_ON_NEW_ACTIVITY_DATA));
+                    goFragment(intent, mGetData);
                     break;
                 }
                 case DefineContentType.TYPE_ON_NEW_ACTIVITI:{ // 스타트 액티비티 요청
-                    goFragment(intent.getSerializableExtra(DefineContentType.KEY_ON_NEW_FRAGMENT_DATA));
+                    //goActivity(intent.getSerializableExtra(DefineContentType.KEY_ON_NEW_ACTIVITY_DATA));
                     break;
                 }
-            }*/
+                case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND:{ //
+                    Toast.makeText(MainActivity.this, mPutData+"", Toast.LENGTH_SHORT).show();
+
+                    break;
+                }
+                case DefineContentType.ACTIVITY_TYPE_FIXD_INFO:{ //
+                    Toast.makeText(MainActivity.this, "프로필수정처리", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                case DefineContentType.ACTIVITY_TYPE_PROFILE_IMG:{ //
+                    Toast.makeText(MainActivity.this, mPutData+"", Toast.LENGTH_SHORT).show();
+
+                    break;
+                }
+
+            }
         }
     }
 
-    private void goActivity(Serializable data) {
+    private void goActivity(Intent intent, Serializable data) {
+        switch (intent.getIntExtra(DefineContentType.KEY_ON_NEW_WHERE , -1)){
+
+        }
 
     }
 
-    private void goFragment(Serializable data) {
+    private void goFragment(Intent intent, Serializable data) {
+        Fragment fragment = mFM.findFragmentByTag(vTabHost.getCurrentTabTag());
+
+
+        switch (intent.getIntExtra(DefineContentType.KEY_ON_NEW_WHERE , -1)){
+            case DefineContentType.TO_SINGLE_LIST:
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((BlogFragment)fragment).getContainer(), new ContentSingListFragment()).commit();
+                break;
+            case DefineContentType.TO_BLOG: {
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((BlogFragment)fragment).getContainer(), new BlogMainFragment()).commit();
+                break;
+            }
+            /*case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND: {
+                fragment.getChildFragmentManager().beginTransaction().replace(((BlogFragment) fragment).getContainer(), new BlogMainFragment()).commit();
+                break;
+            }case DefineContentType.ACTIVITY_TYPE_PROFILE_IMG: {
+                fragment.getChildFragmentManager().beginTransaction().replace(((BlogFragment) fragment).getContainer(), new BlogMainFragment()).commit();
+                break;
+            }*/
+        }
 
     }
 
@@ -157,6 +215,5 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
     public interface OnKeyBackPressedListener {
         void onBack();
     }
-
 
 }
