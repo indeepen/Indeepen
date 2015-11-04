@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.release.indeepen.content.detail.ContentDetailFragment"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/like"
+                android:id="@+id/textView6"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/text_detail_image_like_count"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/comment"
+                android:id="@+id/textView8"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/text_detail_image_comm_count"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/option"
+                android:id="@+id/text_detail_image_option"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/my_profile_thumb"
+            android:layout_height="@dimen/my_profile_thumb"
+            android:id="@+id/img_detail_image_thPro"
+            android:layout_above="@+id/text_detail_image_text"
+            android:layout_toStartOf="@+id/text_detail_image_artist"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/text_detail_image_artist"
+            android:layout_alignBaseline="@+id/text_detail_image_date"
+            android:layout_alignBottom="@+id/text_detail_image_date"
+            android:layout_toEndOf="@+id/text_detail_image_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/text_detail_image_date"
+            android:layout_alignBottom="@+id/img_detail_image_emotion"
+            android:layout_alignStart="@+id/text_detail_image_artist" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/text_detail_image_text"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="@dimen/my_emotion"
+            android:layout_height="@dimen/my_emotion"
+            android:id="@+id/img_detail_image_emotion"
+            android:layout_alignTop="@+id/img_detail_image_thPro"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/list_detail_imgs"
+        android:layout_weight="0.2"
+        />
+</LinearLayout>

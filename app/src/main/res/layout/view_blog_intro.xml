@@ -1,0 +1,101 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.release.indeepen.blog.BlogIntroView"
+    android:id="@+id/view_blog_intro">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="276dp"
+        android:padding="0dp"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:id="@+id/img_blog_background"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/backsample"
+            android:padding="0dp"
+            android:scaleType="centerCrop"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="0.43"
+            android:layout_gravity="center_horizontal|bottom"
+            android:padding="0dp"
+            >
+
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_blog_thProfile"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/images"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fan"
+                    android:id="@+id/btn_fanList"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/img_blog_thProfile"
+                    android:layout_marginRight="15dp"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/imissyou"
+                    android:id="@+id/btn_imissyou"
+                    android:layout_marginLeft="15dp"
+                    android:layout_above="@+id/text_imissyou_count"
+                    android:layout_toEndOf="@+id/img_blog_thProfile" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/textView"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_below="@+id/img_blog_thProfile"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/text_fan_count"
+                    android:layout_alignBottom="@+id/img_blog_thProfile"
+                    android:layout_alignEnd="@+id/btn_fanList" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/text_imissyou_count"
+                    android:layout_alignBottom="@+id/img_blog_thProfile"
+                    android:layout_alignStart="@+id/btn_imissyou" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+</FrameLayout>

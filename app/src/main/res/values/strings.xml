@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Indeepen</string>
+    <string name="action_settings">Settings</string>
+    <string name="fan">Fan+</string>
+    <string name="imissyou">I miss you</string>
+    <string name="like">좋아요</string>
+    <string name="comment">댓글</string>
+    <string name="option">옵션</string>
+
+    <string name="myfans">My Fan들</string>
+    <string name="myartists">My 예술가들</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

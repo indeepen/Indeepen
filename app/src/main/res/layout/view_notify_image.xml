@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:layout_width="@dimen/my_profile_thumb"
+        android:layout_height="@dimen/my_profile_thumb"
+        android:id="@+id/img_push_img_thpro"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/text_push_img_msg"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/img_push_img_thpro" />
+
+    <ImageView
+        android:layout_width="@dimen/my_profile_thumb"
+        android:layout_height="@dimen/my_profile_thumb"
+        android:id="@+id/img_push_img_thcon"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/text_push_img_date"
+        android:layout_alignTop="@+id/text_push_img_msg"
+        android:layout_toEndOf="@+id/text_push_img_msg" />
+</merge>
