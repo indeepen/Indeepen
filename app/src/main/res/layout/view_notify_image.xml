@@ -4,36 +4,35 @@
     android:layout_height="80dp">
 
     <ImageView
+        android:id="@+id/img_push_img_thpro"
         android:layout_width="@dimen/my_profile_thumb"
         android:layout_height="@dimen/my_profile_thumb"
-        android:id="@+id/img_push_img_thpro"
         android:layout_centerVertical="true"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
     <TextView
+        android:id="@+id/text_push_img_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/text_push_img_msg"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/img_push_img_thpro" />
+        android:layout_toEndOf="@+id/img_push_img_thpro"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ImageView
+        android:id="@+id/img_push_img_thcon"
         android:layout_width="@dimen/my_profile_thumb"
         android:layout_height="@dimen/my_profile_thumb"
-        android:id="@+id/img_push_img_thcon"
-        android:scaleType="centerCrop"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:scaleType="centerCrop" />
 
     <TextView
+        android:id="@+id/text_push_img_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/text_push_img_date"
         android:layout_alignTop="@+id/text_push_img_msg"
-        android:layout_toEndOf="@+id/text_push_img_msg" />
+        android:layout_toEndOf="@+id/text_push_img_msg"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 </merge>

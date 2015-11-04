@@ -23,12 +23,12 @@ public class BlogInCultureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_in_culture);
 
-        tabHost = (TabHost)findViewById(R.id.tabHost_in_blog);
+        tabHost = (TabHost) findViewById(R.id.tabHost_in_blog);
         tabHost.setup();
-        pager = (ViewPager)findViewById(R.id.pager_in_blog);
+        pager = (ViewPager) findViewById(R.id.pager_in_blog);
         mAdapter = new TabsAdapter(this, getSupportFragmentManager(), tabHost, pager);
 
-        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_MY_CULTURE).setIndicator(DefineContentType.BLOG_MY_CULTURE),ContentSingListFragment.class, null);
+        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_MY_CULTURE).setIndicator(DefineContentType.BLOG_MY_CULTURE), ContentSingListFragment.class, null);
         mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_LIKE_CULTURE).setIndicator(DefineContentType.BLOG_LIKE_CULTURE), ContentSingListFragment.class, null);
 
         if (savedInstanceState != null) {

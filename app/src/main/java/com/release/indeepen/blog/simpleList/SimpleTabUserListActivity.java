@@ -13,16 +13,17 @@ public class SimpleTabUserListActivity extends AppCompatActivity {
     TabHost tabHost;
     ViewPager pager;
     TabsAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_tab_user_list);
-        tabHost = (TabHost)findViewById(R.id.tabHost);
+        tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
-        pager = (ViewPager)findViewById(R.id.pager);
+        pager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new TabsAdapter(this, getSupportFragmentManager(), tabHost, pager);
 
-        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.SIMPLE_MY_FAN).setIndicator(DefineContentType.SIMPLE_MY_FAN),SimpleUserListFragment.class, null);
+        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.SIMPLE_MY_FAN).setIndicator(DefineContentType.SIMPLE_MY_FAN), SimpleUserListFragment.class, null);
         mAdapter.addTab(tabHost.newTabSpec(DefineContentType.SIMPLE_MY_ARTIST).setIndicator(DefineContentType.SIMPLE_MY_ARTIST), SimpleUserListFragment.class, null);
 
 
@@ -41,8 +42,6 @@ public class SimpleTabUserListActivity extends AppCompatActivity {
             mAdapter.onRestoreInstanceState(savedInstanceState);
         }
     }
-
-
 
 
     @Override

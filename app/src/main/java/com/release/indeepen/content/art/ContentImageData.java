@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by lyo on 2015-10-31.
  */
-public class ContentImageData extends ContentData implements Serializable{
+public class ContentImageData extends ContentData implements Serializable {
 
     public List<Integer> arrIMGs;
 }

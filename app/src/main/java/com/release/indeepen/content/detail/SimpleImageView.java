@@ -24,7 +24,7 @@ public class SimpleImageView extends RelativeLayout {
         init();
     }
 
-    private void init(){
+    private void init() {
         inflate(getContext(), R.layout.view_simple_image, this);
         vIMG = (ImageView) findViewById(R.id.img_detail_img);
     }

@@ -34,16 +34,17 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
     int nCase;
 
     int dataColumnIndex = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_single_choice);
 
-        vGridView = (GridView)findViewById(R.id.grid_single_choice);
+        vGridView = (GridView) findViewById(R.id.grid_single_choice);
         nCase = getIntent().getIntExtra(DefineContentType.SELECT_IMAGE, -1);
-        Button btn = (Button)findViewById(R.id.btn_select);
+        Button btn = (Button) findViewById(R.id.btn_select);
 
-        getSupportLoaderManager().initLoader(0, null, this );
+        getSupportLoaderManager().initLoader(0, null, this);
 
         String[] from = {MediaStore.Images.Media.DATA};
         int[] to = {R.id.image_icon};
@@ -66,9 +67,9 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
 
         vGridView.setAdapter(mAdapter);
 
-        switch(nCase){
+        switch (nCase) {
             case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND:
-            case DefineContentType.ACTIVITY_TYPE_PROFILE_IMG:{
+            case DefineContentType.ACTIVITY_TYPE_PROFILE_IMG: {
                 vGridView.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
             }
         }
@@ -109,7 +110,7 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
         });
     }
 
-    private String getSingleImage(){
+    private String getSingleImage() {
         Cursor c = (Cursor) vGridView.getItemAtPosition(vGridView.getCheckedItemPosition());
         return c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
     }

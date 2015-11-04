@@ -10,7 +10,7 @@ import com.release.indeepen.R;
 /**
  * Created by lyo on 2015-10-31.
  */
-public class ThumbImageView extends FrameLayout{
+public class ThumbImageView extends FrameLayout {
 
     ImageView thIMG;
 
@@ -24,12 +24,12 @@ public class ThumbImageView extends FrameLayout{
         init();
     }
 
-    private void init(){
+    private void init() {
         inflate(getContext(), R.layout.view_thumb_image, this);
         thIMG = (ImageView) findViewById(R.id.img_item);
     }
 
-    void setIMG(int path){
+    void setIMG(int path) {
         thIMG.setImageResource(path);
     }
 

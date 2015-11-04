@@ -16,37 +16,34 @@ import java.util.List;
 /**
  * Created by lyo on 2015-10-31.
  */
-public class BlogAdapter extends BaseAdapter implements BlogIntroView.OnFragmentActionListener{
+public class BlogAdapter extends BaseAdapter implements BlogIntroView.OnFragmentActionListener {
 
     List<ListData> items = new ArrayList<ListData>();
+    OnIntroAdapterClickListener mListener;
+
+    public BlogAdapter() {
+
+    }
 
     @Override
     public void onFragmentActionListener(Fragment fragment, Intent intent, int type) {
 //
     }
 
-    OnIntroAdapterClickListener mListener;
-    interface OnIntroAdapterClickListener{
-        void onAdapterItemClick();
-    }
-    public void setOnIntroAdapterListener(OnIntroAdapterClickListener listener){
+    public void setOnIntroAdapterListener(OnIntroAdapterClickListener listener) {
         mListener = listener;
     }
 
-    public BlogAdapter() {
-
-    }
-
-    public void add(ListData data){
+    public void add(ListData data) {
         items.add(data);
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(getItem(position) instanceof BlogIntroData){
+        if (getItem(position) instanceof BlogIntroData) {
             return DefineContentType.BLOG_INTRO_PROFILE;
-        }else{
+        } else {
             return DefineContentType.BLOG_INTRO_ART;
         }
     }
@@ -74,26 +71,30 @@ public class BlogAdapter extends BaseAdapter implements BlogIntroView.OnFragment
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case DefineContentType.BLOG_INTRO_PROFILE: {
                 BlogIntroView view = (BlogIntroView) convertView;
                 if (null == view) {
                     view = new BlogIntroView(parent.getContext());
                 }
-                view.setData((BlogIntroData)getItem(position));
+                view.setData((BlogIntroData) getItem(position));
                 view.setOnFragmentAction(this);
                 return view;
             }
             case DefineContentType.BLOG_INTRO_ART:
-            default:{
+            default: {
                 TripleGridView view = (TripleGridView) convertView;
-                if(null == view){
+                if (null == view) {
                     view = new TripleGridView(parent.getContext());
                 }
-                view.setData((ContentData)getItem(position));
+                view.setData((ContentData) getItem(position));
                 return view;
             }
         }
+    }
+
+    interface OnIntroAdapterClickListener {
+        void onAdapterItemClick();
     }
 
 

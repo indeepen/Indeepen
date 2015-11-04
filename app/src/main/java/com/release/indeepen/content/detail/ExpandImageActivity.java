@@ -13,6 +13,7 @@ public class ExpandImageActivity extends AppCompatActivity {
 
     ImageView vImage;
     PhotoViewAttacher attacher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +23,10 @@ public class ExpandImageActivity extends AppCompatActivity {
         init();
     }
 
-    private void init(){
-        if(0 != getIntent().getIntExtra(DefineContentType.EXPAND_IMG, 0)) {
+    private void init() {
+        if (0 != getIntent().getIntExtra(DefineContentType.EXPAND_IMG, 0)) {
             vImage.setImageResource(getIntent().getIntExtra(DefineContentType.EXPAND_IMG, 0));
-        }else{
+        } else {
             vImage.setImageResource(R.drawable.dog2);
         }
     }

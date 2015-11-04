@@ -17,157 +17,154 @@ import android.widget.TabWidget;
 import java.util.ArrayList;
 
 public class TabsAdapter extends FragmentPagerAdapter implements
-		OnTabChangeListener, ViewPager.OnPageChangeListener {
-	private final Context mContext;
-	private final TabHost mTabHost;
-	private final ViewPager mViewPager;
-	private final FragmentManager mFragmentManager;
-	private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
-	private final static String FIELD_KEY_PREFIX = "tabinfo";
+        OnTabChangeListener, ViewPager.OnPageChangeListener {
+    private final static String FIELD_KEY_PREFIX = "tabinfo";
+    private final Context mContext;
+    private final TabHost mTabHost;
+    private final ViewPager mViewPager;
+    private final FragmentManager mFragmentManager;
+    private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
+    OnTabChangeListener mTabChangeListener;
+    OnPageChangeListener mPageChangeListener;
 
+    public TabsAdapter(FragmentActivity activity, TabHost tabHost,
+                       ViewPager pager) {
+        this(activity, activity.getSupportFragmentManager(), tabHost, pager);
+    }
 
-	static final class TabInfo {
-		private final String tag;
-		private final Class<?> clss;
-		private final Bundle args;
-		private Fragment fragment;
+    public TabsAdapter(Context context, FragmentManager fragmentManager, TabHost tabHost, ViewPager pager) {
+        super(fragmentManager);
+        mContext = context;
+        mFragmentManager = fragmentManager;
+        mTabHost = tabHost;
+        mViewPager = pager;
+        mTabHost.setOnTabChangedListener(this);
+        mViewPager.setAdapter(this);
+        mViewPager.addOnPageChangeListener(this);
+    }
 
-		TabInfo(String _tag, Class<?> _class, Bundle _args) {
-			tag = _tag;
-			clss = _class;
-			args = _args;
-		}
-	}
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        for (TabInfo info : mTabs) {
+            String keyfield = FIELD_KEY_PREFIX + info.tag;
+            info.fragment = mFragmentManager.getFragment(savedInstanceState, keyfield);
+        }
+    }
 
-	static class DummyTabFactory implements TabHost.TabContentFactory {
-		private final Context mContext;
+    public void onSaveInstanceState(Bundle outState) {
+        for (TabInfo info : mTabs) {
+            String keyfield = FIELD_KEY_PREFIX + info.tag;
+            if (info.fragment != null) {
+                mFragmentManager.putFragment(outState, keyfield, info.fragment);
+            }
+        }
+    }
 
-		public DummyTabFactory(Context context) {
-			mContext = context;
-		}
+    public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
+        tabSpec.setContent(new DummyTabFactory(mContext));
+        String tag = tabSpec.getTag();
 
-		@Override
-		public View createTabContent(String tag) {
-			View v = new View(mContext);
-			v.setMinimumWidth(0);
-			v.setMinimumHeight(0);
-			return v;
-		}
-	}
+        TabInfo info = new TabInfo(tag, clss, args);
+        mTabs.add(info);
+        notifyDataSetChanged();
+        mTabHost.addTab(tabSpec);
+    }
 
-	public TabsAdapter(FragmentActivity activity, TabHost tabHost,
-					   ViewPager pager) {
-		this(activity,activity.getSupportFragmentManager(),tabHost,pager);
-	}
+    @Override
+    public int getCount() {
+        return mTabs.size();
+    }
 
-	public TabsAdapter(Context context, FragmentManager fragmentManager, TabHost tabHost, ViewPager pager) {
-		super(fragmentManager);
-		mContext = context;
-		mFragmentManager = fragmentManager;
-		mTabHost = tabHost;
-		mViewPager = pager;
-		mTabHost.setOnTabChangedListener(this);
-		mViewPager.setAdapter(this);
-		mViewPager.addOnPageChangeListener(this);
-	}
+    @Override
+    public Fragment getItem(int position) {
+        TabInfo info = mTabs.get(position);
+        info.fragment = Fragment.instantiate(mContext, info.clss.getName(),
+                info.args);
+        return info.fragment;
+    }
 
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
-		for (TabInfo info : mTabs) {
-			String keyfield = FIELD_KEY_PREFIX + info.tag;
-			info.fragment = mFragmentManager.getFragment(savedInstanceState, keyfield);
-		}
-	}
+    public void setOnTabChangedListener(OnTabChangeListener listener) {
+        mTabChangeListener = listener;
+    }
 
-	public void onSaveInstanceState(Bundle outState) {
-		for (TabInfo info : mTabs) {
-			String keyfield = FIELD_KEY_PREFIX + info.tag;
-			if (info.fragment != null) {
-				mFragmentManager.putFragment(outState, keyfield, info.fragment);
-			}
-		}
-	}
+    @Override
+    public void onTabChanged(String tabId) {
+        int position = mTabHost.getCurrentTab();
+        mViewPager.setCurrentItem(position);
+        if (mTabChangeListener != null) {
+            mTabChangeListener.onTabChanged(tabId);
+        }
+    }
 
-	public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
-		tabSpec.setContent(new DummyTabFactory(mContext));
-		String tag = tabSpec.getTag();
+    public Fragment getTabFragment(int position) {
+        TabInfo info = mTabs.get(position);
+        if (info != null) {
+            return info.fragment;
+        }
+        return null;
+    }
 
-		TabInfo info = new TabInfo(tag, clss, args);
-		mTabs.add(info);
-		notifyDataSetChanged();
-		mTabHost.addTab(tabSpec);
-	}
+    public Fragment getCurrentTabFragment() {
+        return getTabFragment(mTabHost.getCurrentTab());
+    }
 
-	@Override
-	public int getCount() {
-		return mTabs.size();
-	}
+    public void setOnPageChangeListener(OnPageChangeListener listener) {
+        mPageChangeListener = listener;
+    }
 
-	@Override
-	public Fragment getItem(int position) {
-		TabInfo info = mTabs.get(position);
-		info.fragment = Fragment.instantiate(mContext, info.clss.getName(),
-				info.args);
-		return info.fragment;
-	}
+    @Override
+    public void onPageScrolled(int position, float positionOffset,
+                               int positionOffsetPixels) {
+        if (mPageChangeListener != null) {
+            mPageChangeListener.onPageScrolled(position, positionOffset,
+                    positionOffsetPixels);
+        }
+    }
 
-	OnTabChangeListener mTabChangeListener;
+    @Override
+    public void onPageSelected(int position) {
+        TabWidget widget = mTabHost.getTabWidget();
+        int oldFocusability = widget.getDescendantFocusability();
+        widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+        mTabHost.setCurrentTab(position);
+        widget.setDescendantFocusability(oldFocusability);
+        if (mPageChangeListener != null) {
+            mPageChangeListener.onPageSelected(position);
+        }
+    }
 
-	public void setOnTabChangedListener(OnTabChangeListener listener) {
-		mTabChangeListener = listener;
-	}
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if (mPageChangeListener != null) {
+            mPageChangeListener.onPageScrollStateChanged(state);
+        }
+    }
 
-	@Override
-	public void onTabChanged(String tabId) {
-		int position = mTabHost.getCurrentTab();
-		mViewPager.setCurrentItem(position);
-		if (mTabChangeListener != null) {
-			mTabChangeListener.onTabChanged(tabId);
-		}
-	}
+    static final class TabInfo {
+        private final String tag;
+        private final Class<?> clss;
+        private final Bundle args;
+        private Fragment fragment;
 
-	public Fragment getTabFragment(int position) {
-		TabInfo info = mTabs.get(position);
-		if (info != null) {
-			return info.fragment;
-		}
-		return null;
-	}
+        TabInfo(String _tag, Class<?> _class, Bundle _args) {
+            tag = _tag;
+            clss = _class;
+            args = _args;
+        }
+    }
 
-	public Fragment getCurrentTabFragment() {
-		return getTabFragment(mTabHost.getCurrentTab());
-	}
+    static class DummyTabFactory implements TabHost.TabContentFactory {
+        private final Context mContext;
 
-	OnPageChangeListener mPageChangeListener;
+        public DummyTabFactory(Context context) {
+            mContext = context;
+        }
 
-	public void setOnPageChangeListener(OnPageChangeListener listener) {
-		mPageChangeListener = listener;
-	}
-
-	@Override
-	public void onPageScrolled(int position, float positionOffset,
-			int positionOffsetPixels) {
-		if (mPageChangeListener != null) {
-			mPageChangeListener.onPageScrolled(position, positionOffset,
-					positionOffsetPixels);
-		}
-	}
-
-	@Override
-	public void onPageSelected(int position) {
-		TabWidget widget = mTabHost.getTabWidget();
-		int oldFocusability = widget.getDescendantFocusability();
-		widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-		mTabHost.setCurrentTab(position);
-		widget.setDescendantFocusability(oldFocusability);
-		if (mPageChangeListener != null) {
-			mPageChangeListener.onPageSelected(position);
-		}
-	}
-
-	@Override
-	public void onPageScrollStateChanged(int state) {
-		if (mPageChangeListener != null) {
-			mPageChangeListener.onPageScrollStateChanged(state);
-		}
-	}
+        @Override
+        public View createTabContent(String tag) {
+            View v = new View(mContext);
+            v.setMinimumWidth(0);
+            v.setMinimumHeight(0);
+            return v;
+        }
+    }
 }

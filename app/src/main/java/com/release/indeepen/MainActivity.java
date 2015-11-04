@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
     FragmentManager mFM;
 
     boolean isClose = false;
+    private OnKeyBackPressedListener mOnKeyBackPressedListener;
 
-    public static MainActivity getInstance(){
+    public static MainActivity getInstance() {
         return new MainActivity();
     }
 
@@ -38,10 +39,9 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(null != savedInstanceState){
+        if (null != savedInstanceState) {
 
         }
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
 
                 //mFM.popBackStackImmediate(null, mFM.POP_BACK_STACK_INCLUSIVE);
 
-               // mFM.beginTransaction().attach(mFM.findFragmentByTag(tabId));
+                // mFM.beginTransaction().attach(mFM.findFragmentByTag(tabId));
 
             }
         });
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(null != intent){
+        if (null != intent) {
             Toast.makeText(MainActivity.this, intent.getStringExtra("path"), Toast.LENGTH_SHORT).show();
             /*switch(intent.getIntExtra(DefineContentType.KEY_ON_NEW_REQUEST,-1)){
                 case DefineContentType.TYPE_ON_NEW_REPLACE:{ // 리플레이스 요청
@@ -92,11 +92,11 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
         }
     }
 
-    private void goActivity(Serializable data){
+    private void goActivity(Serializable data) {
 
     }
 
-    private void goFragment(Serializable data){
+    private void goFragment(Serializable data) {
 
     }
 
@@ -128,12 +128,12 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
             mOnKeyBackPressedListener.onBack();
             return;
         }
-        if(mFM.getBackStackEntryCount() > 0){
+        if (mFM.getBackStackEntryCount() > 0) {
             mFM.popBackStack();
-        }else if(mFM.getBackStackEntryCount() == 0){
-            if(isClose) {
+        } else if (mFM.getBackStackEntryCount() == 0) {
+            if (isClose) {
                 super.onBackPressed();
-            }else{
+            } else {
                 vTabHost.setCurrentTabByTag(DefineContentType.MAIN_TAB_CULTURE);
                 isClose = true;
             }
@@ -141,17 +141,12 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
         }
     }
 
-
-    public interface OnKeyBackPressedListener {
-        void onBack();
+    public OnKeyBackPressedListener getOnKeyBackPressedListener() {
+        return mOnKeyBackPressedListener;
     }
-    private OnKeyBackPressedListener mOnKeyBackPressedListener;
 
     public void setOnKeyBackPressedListener(OnKeyBackPressedListener listener) {
         mOnKeyBackPressedListener = listener;
-    }
-    public OnKeyBackPressedListener getOnKeyBackPressedListener() {
-        return mOnKeyBackPressedListener;
     }
 
     @Override
@@ -159,6 +154,9 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
         super.onSaveInstanceState(outState);
     }
 
+    public interface OnKeyBackPressedListener {
+        void onBack();
+    }
 
 
 }

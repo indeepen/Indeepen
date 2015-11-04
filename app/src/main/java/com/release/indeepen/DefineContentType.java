@@ -6,9 +6,9 @@ package com.release.indeepen;
 public interface DefineContentType {
 
     int CALLBACK_TO_BLOG = 0;
-    int CALLBACK_TO_SINGLE_LIST =1;
+    int CALLBACK_TO_SINGLE_LIST = 1;
 
-/* 콜백 타입 관련 정의*/
+    /* 콜백 타입 관련 정의*/
     int TO_SINGLE_LIST = 0;
 
     int TO_DETAIL_IMGAE = 1;
@@ -32,8 +32,7 @@ public interface DefineContentType {
     String KEY_ON_NEW_ACTIVITY_DATA = "ACTIVITY_DATA";
 
 
-
-/* 메인 탭 관련 정의*/
+    /* 메인 탭 관련 정의*/
     String MAIN_TAB_CULTURE = "culture";
     String MAIN_TAB_FAN = "fan";
     String MAIN_TAB_CREATE = "create";
@@ -41,7 +40,7 @@ public interface DefineContentType {
     String MAIN_TAB_MYBLOG = "myBlog";
 
 
-/* 블로그 어댑터 관련 정의*/
+    /* 블로그 어댑터 관련 정의*/
     int BLOG_TYPE_COUNT = 2;
 
     int BLOG_INTRO_PROFILE = 0;
@@ -52,7 +51,7 @@ public interface DefineContentType {
 
     int COMMENT_TYPE_COUNT = 1;
 
-/* Single List 컨텐츠 관련 정의*/
+    /* Single List 컨텐츠 관련 정의*/
     int SINGLE_TYPE_COUNT = 4;
 
     int SINGLE_IMAGE = 0;
@@ -70,7 +69,7 @@ public interface DefineContentType {
     //........
 
 
-/* 알림 관련 정의*/
+    /* 알림 관련 정의*/
     int NOTI_TYPE_COUNT = 2;
     int NOTI_LIST_TEXT = 0;
     int NOTI_LIST_IMG = 1;
@@ -79,7 +78,7 @@ public interface DefineContentType {
     String NOTI_VER_LIKE_ART = "";
     String NOTI_VER_FAN = "";
     String NOTI_VER_MISSU = "";
-    String NOTI_VER_FAN_SPACE= "";
+    String NOTI_VER_FAN_SPACE = "";
     String NOTI_VER_MISSU_SPACE = "";
     String NOTI_VER_COMM_CULTURE = "";
     String NOTI_VER_COMM_ART = "";
@@ -90,7 +89,7 @@ public interface DefineContentType {
     int NOTI_TYPE_LIKE_ART = 1;
     int NOTI_TYPE_COMM_CULTURE = 2;
     int NOTI_TYPE_COMM_ART = 3;
-    int NOTI_TYPE_TAG= 4;
+    int NOTI_TYPE_TAG = 4;
 
     // 이미지 사용 알림
     int NOTI_TYPE_FAN = 5;
@@ -102,33 +101,31 @@ public interface DefineContentType {
 /* 컨탠츠 디테일 관련 정의*/
 
     String BUNDLE_DATA_DETAIL_IMAGE = "detailImage";
-    String BUNDLE_DATA_DETAIL_MUSIC ="detailMusic";
+    String BUNDLE_DATA_DETAIL_MUSIC = "detailMusic";
     String BUNDLE_DATA_DETAIL_MUSIC_VIDEO = "detailMusicVideo";
     String BUNDLE_DATA_DETAIL_YOUTUBE = "detailYoutube";
     //int BUNDLE_DATA_DETAIL_IMAGE = "detail_image";
 
-/* 사진확대*/
+    /* 사진확대*/
     String EXPAND_IMG = "expendImg";
 
-/* 심플 유저 리스트*/
+    /* 심플 유저 리스트*/
     String SIMPLE_MY_FAN = "My 팬들";
-    String SIMPLE_MY_ARTIST ="My 예술가들";
+    String SIMPLE_MY_ARTIST = "My 예술가들";
 
     int SIMPLE_USER_LIST_TYPE = 1;
 
-/* 블로그 내 문화 정보*/
+    /* 블로그 내 문화 정보*/
     String BLOG_MY_CULTURE = "My 문화";
     String BLOG_LIKE_CULTURE = "좋아요 문화";
 
-/* 디바이스 내 사진 선택 종류*/
+    /* 디바이스 내 사진 선택 종류*/
     String SELECT_IMAGE = "selectedPicture";
 
-    int ACTIVITY_TYPE_PROFILE_BACKGROUND =0;
-    int ACTIVITY_TYPE_PROFILE_IMG =1;
-    int ACTIVITY_TYPE_EXPANED_IMG =2;
-    int ACTIVITY_TYPE_FIXD_INFO =3;
-
-
+    int ACTIVITY_TYPE_PROFILE_BACKGROUND = 0;
+    int ACTIVITY_TYPE_PROFILE_IMG = 1;
+    int ACTIVITY_TYPE_EXPANED_IMG = 2;
+    int ACTIVITY_TYPE_FIXD_INFO = 3;
 
 
 }

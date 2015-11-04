@@ -12,7 +12,7 @@ import com.release.indeepen.user.UserData;
 /**
  * Created by lyo on 2015-11-02.
  */
-public class SimpleUserView extends RelativeLayout{
+public class SimpleUserView extends RelativeLayout {
 
     ImageView vThPro;
     TextView vTextArtist;
@@ -27,14 +27,14 @@ public class SimpleUserView extends RelativeLayout{
         init();
     }
 
-    private void init(){
+    private void init() {
         inflate(getContext(), R.layout.view_simple_user, this);
         vThPro = (ImageView) findViewById(R.id.img_simple_thPro);
         vTextArtist = (TextView) findViewById(R.id.text_simple_artist);
 
     }
 
-    public void setData(UserData data){
+    public void setData(UserData data) {
         vThPro.setImageResource(data.thProfile);
         vTextArtist.setText(data.sArtist);
     }

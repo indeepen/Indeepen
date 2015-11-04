@@ -9,6 +9,7 @@ public class ContentDetailActivity extends AppCompatActivity {
 
 
     ContentDetailFragment vfragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

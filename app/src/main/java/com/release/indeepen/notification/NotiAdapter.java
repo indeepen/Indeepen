@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by lyo on 2015-10-31.
  */
-public class NotiAdapter extends BaseAdapter{
+public class NotiAdapter extends BaseAdapter {
 
     List<PushData> items = new ArrayList<PushData>();
 
-    public void add(PushData data){
+    public void add(PushData data) {
         items.add(data);
         notifyDataSetChanged();
     }
@@ -29,7 +29,7 @@ public class NotiAdapter extends BaseAdapter{
     @Override
     public int getItemViewType(int position) {
 
-        switch (((PushData)getItem(position)).nPushType){
+        switch (((PushData) getItem(position)).nPushType) {
             case DefineContentType.NOTI_TYPE_LIKE_CULTURE:
             case DefineContentType.NOTI_TYPE_LIKE_ART:
             case DefineContentType.NOTI_TYPE_COMM_CULTURE:
@@ -37,10 +37,10 @@ public class NotiAdapter extends BaseAdapter{
             case DefineContentType.NOTI_TYPE_TAG:
                 return DefineContentType.NOTI_LIST_TEXT;
 
-            case DefineContentType.NOTI_TYPE_FAN :
-            case DefineContentType.NOTI_TYPE_MISSU :
-            case DefineContentType.NOTI_TYPE_FAN_SPACE :
-            case DefineContentType.NOTI_TYPE_MISSU_SPACE :
+            case DefineContentType.NOTI_TYPE_FAN:
+            case DefineContentType.NOTI_TYPE_MISSU:
+            case DefineContentType.NOTI_TYPE_FAN_SPACE:
+            case DefineContentType.NOTI_TYPE_MISSU_SPACE:
             default:
                 return DefineContentType.NOTI_LIST_IMG;
         }
@@ -65,9 +65,9 @@ public class NotiAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
 
-        if(DefineContentType.NOTI_LIST_IMG ==  getItemViewType(position)){
+        if (DefineContentType.NOTI_LIST_IMG == getItemViewType(position)) {
             NotiImageView view;
-            switch (((PushData)getItem(position)).nPushType) {
+            switch (((PushData) getItem(position)).nPushType) {
                 case DefineContentType.NOTI_TYPE_LIKE_CULTURE:
                 case DefineContentType.NOTI_TYPE_LIKE_ART:
                 case DefineContentType.NOTI_TYPE_COMM_CULTURE:
@@ -81,15 +81,15 @@ public class NotiAdapter extends BaseAdapter{
                     view.setData((PushData) getItem(position));
                     return view;
             }
-        }else{
+        } else {
             NotiTextView view;
-            switch (((PushData)getItem(position)).nPushType) {
-                case DefineContentType.NOTI_TYPE_FAN :
-                case DefineContentType.NOTI_TYPE_MISSU :
-                case DefineContentType.NOTI_TYPE_FAN_SPACE :
-                case DefineContentType.NOTI_TYPE_MISSU_SPACE :
+            switch (((PushData) getItem(position)).nPushType) {
+                case DefineContentType.NOTI_TYPE_FAN:
+                case DefineContentType.NOTI_TYPE_MISSU:
+                case DefineContentType.NOTI_TYPE_FAN_SPACE:
+                case DefineContentType.NOTI_TYPE_MISSU_SPACE:
                 default:
-                    view = (NotiTextView)convertView;
+                    view = (NotiTextView) convertView;
                     if (null == view) {
                         view = new NotiTextView(parent.getContext());
                     }

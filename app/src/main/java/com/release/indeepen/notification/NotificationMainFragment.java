@@ -23,6 +23,7 @@ public class NotificationMainFragment extends Fragment {
 
     NotiAdapter mNotiAdapter;
     ListView vNotiList;
+
     public NotificationMainFragment() {
         // Required empty public constructor
     }
@@ -45,7 +46,7 @@ public class NotificationMainFragment extends Fragment {
         vNotiList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(CallbackListener.mFragnetListener instanceof NotificationFragment) {
+                if (CallbackListener.mFragnetListener instanceof NotificationFragment) {
                     CallbackListener.mFragnetListener.onReplaceFragment(new ContentDetailFragment(), DefineContentType.CALLBACK_TO_BLOG);
                 }
             }
@@ -56,13 +57,13 @@ public class NotificationMainFragment extends Fragment {
     }
 
 
-    private void init(){
+    private void init() {
 
-        for(int idx=0; idx < 8; idx++) {
+        for (int idx = 0; idx < 8; idx++) {
             PushData mData = new PushData();
             mData.nPushType = 1;
             mData.thProfile = DefineTest.ARR_IMG[idx];
-            mData.sMSG = idx+"";
+            mData.sMSG = idx + "";
             mNotiAdapter.add(mData);
         }
     }

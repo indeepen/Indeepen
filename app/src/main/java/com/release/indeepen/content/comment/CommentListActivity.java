@@ -14,6 +14,7 @@ import com.release.indeepen.blog.BlogMainFragment;
 public class CommentListActivity extends AppCompatActivity {
     CommentAdapter mAdatper;
     ListView vList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +36,11 @@ public class CommentListActivity extends AppCompatActivity {
         init();
     }
 
-    public void init(){
-        for(int idx=0; idx<10; idx++){
+    public void init() {
+        for (int idx = 0; idx < 10; idx++) {
             CommentData data = new CommentData();
             data.sThPro = R.drawable.dog;
-            data.sArtist = "예술가이름"+ idx;
+            data.sArtist = "예술가이름" + idx;
             data.sComment = "    훌륭합니다" + idx;
             data.sDate = "오늘";
             mAdatper.add(data);

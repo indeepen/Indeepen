@@ -21,13 +21,14 @@ import com.release.indeepen.content.art.ContentImageData;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContentDetailFragment extends Fragment implements View.OnClickListener{
+public class ContentDetailFragment extends Fragment implements View.OnClickListener {
 
     ContentImageData mData;
     ListView vList;
     ImageView vThPro;
     TextView vTextArtist;
     SimpleImageAdapter mAdapter;
+
     public ContentDetailFragment() {
         // Required empty public constructor
     }
@@ -61,18 +62,18 @@ public class ContentDetailFragment extends Fragment implements View.OnClickListe
         return view;
     }
 
-    private void init(){
-        if(null != getArguments()) {
+    private void init() {
+        if (null != getArguments()) {
             mData = (ContentImageData) getArguments().getSerializable(DefineContentType.BUNDLE_DATA_DETAIL_IMAGE);
             setData(mData);
         }
     }
 
-    private void setData(ContentImageData data){
+    private void setData(ContentImageData data) {
 
         vThPro.setImageResource(mData.thProfile);
 
-        for(int idx = 0; idx< mData.arrIMGs.size(); idx++) {
+        for (int idx = 0; idx < mData.arrIMGs.size(); idx++) {
             mAdapter.add(mData.arrIMGs.get(idx));
         }
 
@@ -80,9 +81,9 @@ public class ContentDetailFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.img_detail_image_thPro:
-            case R.id.text_detail_image_artist:{
+            case R.id.text_detail_image_artist: {
                 CallbackListener.mFragnetListener.onReplaceFragment(new BlogMainFragment(), DefineContentType.CALLBACK_TO_BLOG);
                 getActivity().finish();
                 break;

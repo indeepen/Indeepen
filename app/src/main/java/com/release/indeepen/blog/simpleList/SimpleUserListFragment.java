@@ -29,7 +29,7 @@ public class SimpleUserListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_simple_user_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_simple_user_list, container, false);
         vList = (ListView) view.findViewById(R.id.list_simple_user);
         mAdapter = new SimpleUserListAdapter();
         vList.setAdapter(mAdapter);
@@ -43,16 +43,15 @@ public class SimpleUserListFragment extends Fragment {
         });
 
 
-
         return view;
     }
 
 
-    private void init(){
+    private void init() {
         // mAdapter.removeAll();
-        for(int idx=0; idx<13; idx++){
+        for (int idx = 0; idx < 13; idx++) {
             UserData data = new UserData();
-            data.thProfile = DefineTest.ARR_IMG2[(int)(Math.random()*10)%8];
+            data.thProfile = DefineTest.ARR_IMG2[(int) (Math.random() * 10) % 8];
             data.sArtist = "이름 - " + idx;
             mAdapter.add(data);
         }

@@ -12,19 +12,19 @@ public class CallbackListener {
     public static OnGoActivityListener mActivityListener;
 
 
-    public static void setOnReplaceFragmentListener(OnReplaceFragmentListener listener){
+    public static void setOnReplaceFragmentListener(OnReplaceFragmentListener listener) {
         mFragnetListener = listener;
     }
 
-    public interface OnReplaceFragmentListener{
-        void onReplaceFragment(Fragment fragment, int Type);
-    }
-
-    public static void setOnGoActivityListener(OnGoActivityListener listener){
+    public static void setOnGoActivityListener(OnGoActivityListener listener) {
         mActivityListener = listener;
     }
 
-    public interface OnGoActivityListener{
+    public interface OnReplaceFragmentListener {
+        void onReplaceFragment(Fragment fragment, int Type);
+    }
+
+    public interface OnGoActivityListener {
         void onGoActivity(Intent intent, int type);
     }
 }

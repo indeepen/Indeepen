@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
 
-
     <ImageView
         android:id="@+id/image_icon"
         android:layout_width="100dp"
@@ -16,8 +15,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:visibility="invisible"
         android:src="@drawable/images"
-        />
+        android:visibility="invisible" />
 
 </FrameLayout>

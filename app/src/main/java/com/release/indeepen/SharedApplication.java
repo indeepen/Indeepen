@@ -12,20 +12,13 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 /**
  * Created by lyo on 2015-11-02.
  */
-public class SharedApplication extends Application{
+public class SharedApplication extends Application {
 
     private static Context mContext;
 
 
     public static Context getContext() {
         return mContext;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initImageLoader(this);
-        mContext = this;
     }
 
     public static void initImageLoader(Context context) {
@@ -48,5 +41,12 @@ public class SharedApplication extends Application{
 //                .imageDownloader(new HttpClientImageDownloader(context, NetworkManager.getInstance().getHttpClient()))
                 .build();
         ImageLoader.getInstance().init(config);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initImageLoader(this);
+        mContext = this;
     }
 }

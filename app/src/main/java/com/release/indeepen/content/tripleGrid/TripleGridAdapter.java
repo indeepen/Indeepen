@@ -13,23 +13,22 @@ import java.util.List;
 /**
  * Created by lyo on 2015-10-31.
  */
-public class TripleGridAdapter extends BaseAdapter{
+public class TripleGridAdapter extends BaseAdapter {
 
     List<ContentData> items = new ArrayList<ContentData>();
     Context mContext;
 
-    public void add(ContentData data){
+    public TripleGridAdapter(Context context) {
+        this.mContext = context;
+    }
+
+    public void add(ContentData data) {
         items.add(data);
         notifyDataSetChanged();
     }
 
-
-    public void removeAll(){
+    public void removeAll() {
         items.clear();
-    }
-
-    public TripleGridAdapter(Context context) {
-        this.mContext = context;
     }
 
     @Override
@@ -49,8 +48,8 @@ public class TripleGridAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       ThumbImageView view = (ThumbImageView) convertView;
-        if(null == view){
+        ThumbImageView view = (ThumbImageView) convertView;
+        if (null == view) {
             view = new ThumbImageView(parent.getContext());
         }
 
@@ -59,7 +58,6 @@ public class TripleGridAdapter extends BaseAdapter{
         view.setIMG(items.get(position).thIMG);
         return view;
     }
-
 
 
 }

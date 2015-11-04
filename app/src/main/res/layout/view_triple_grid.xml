@@ -1,65 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_gravity="center_horizontal|top"
+        android:orientation="horizontal"
+        android:padding="0dp">
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="예술"
             android:id="@+id/btn_tab_art"
-            android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:padding="0dp"/>
-
-        <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="좋아요"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="예술" />
+
+        <Button
             android:id="@+id/btn_tab_favorite"
-            android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:padding="0dp"/>
-
-        <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="문화정보"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="좋아요" />
+
+        <Button
             android:id="@+id/btn_tab_culture"
-            android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:padding="0dp"/>
-
-        <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="협력"
-            android:id="@+id/btn_tab_collabo"
-            android:layout_weight="1"
             android:layout_margin="0dp"
-            android:padding="0dp"/>
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="문화정보" />
+
+        <Button
+            android:id="@+id/btn_tab_collabo"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="협력" />
 
     </LinearLayout>
 
     <com.release.indeepen.content.tripleGrid.CustomGridView
+        android:id="@+id/grid_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/grid_item"
         android:layout_gravity="left|top"
         android:clickable="true"
         android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"
-        android:numColumns="3"/>
+        android:numColumns="3"
+        android:verticalSpacing="1dp" />
 </LinearLayout>

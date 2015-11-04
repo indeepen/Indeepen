@@ -29,14 +29,6 @@ public class BlogIntroView extends FrameLayout {
 
     private OnFragmentActionListener mListener;
 
-    public interface OnFragmentActionListener {
-        void onFragmentActionListener(Fragment fragment, Intent intent, int type);
-    }
-
-    public void setOnFragmentAction(OnFragmentActionListener listener) {
-        mListener = listener;
-    }
-
     public BlogIntroView(Context context) {
         super(context);
         init();
@@ -45,6 +37,10 @@ public class BlogIntroView extends FrameLayout {
     public BlogIntroView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+    }
+
+    public void setOnFragmentAction(OnFragmentActionListener listener) {
+        mListener = listener;
     }
 
     private void init() {
@@ -156,6 +152,10 @@ public class BlogIntroView extends FrameLayout {
         PopupIMissU popup = new PopupIMissU(getContext());
         popup.setOutsideTouchable(true);
         popup.showAtLocation(this, Gravity.CENTER, 0, 0);
+    }
+
+    public interface OnFragmentActionListener {
+        void onFragmentActionListener(Fragment fragment, Intent intent, int type);
     }
 
 

@@ -14,12 +14,12 @@ public class CommentAdapter extends BaseAdapter {
 
     List<CommentData> items = new ArrayList<CommentData>();
 
-    public void add(CommentData data){
+    public void add(CommentData data) {
         items.add(data);
         notifyDataSetChanged();
     }
 
-    public void removeAll(){
+    public void removeAll() {
         items.clear();
     }
 
@@ -40,12 +40,12 @@ public class CommentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CommentView view = (CommentView)convertView;
-        if(null == view){
+        CommentView view = (CommentView) convertView;
+        if (null == view) {
             view = new CommentView(parent.getContext());
         }
 
-        view.setData((CommentData)getItem(position));
+        view.setData((CommentData) getItem(position));
 
         return view;
     }

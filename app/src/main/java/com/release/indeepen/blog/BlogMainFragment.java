@@ -14,7 +14,7 @@ import com.release.indeepen.content.ContentData;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlogMainFragment extends Fragment implements BlogAdapter.OnIntroAdapterClickListener/*implements CallbackListener.OnGoActivityListener*/{
+public class BlogMainFragment extends Fragment implements BlogAdapter.OnIntroAdapterClickListener/*implements CallbackListener.OnGoActivityListener*/ {
     ListView vRefreshList;
     BlogAdapter mBlogAdapter;
 

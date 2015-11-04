@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import com.release.indeepen.R;
 
 public class CheckItemView extends FrameLayout implements Checkable {
+    ImageView checkView;
+    boolean isChecked = false;
+
     public CheckItemView(Context context) {
         super(context);
         init();
@@ -19,13 +22,10 @@ public class CheckItemView extends FrameLayout implements Checkable {
         init();
     }
 
-    ImageView checkView;
-
     private void init() {
         inflate(getContext(), R.layout.checked_item, this);
-        checkView = (ImageView)findViewById(R.id.image_select_icon);
+        checkView = (ImageView) findViewById(R.id.image_select_icon);
     }
-
 
     private void drawCheck() {
         if (isChecked) {
@@ -36,7 +36,10 @@ public class CheckItemView extends FrameLayout implements Checkable {
         }
     }
 
-    boolean isChecked = false;
+    @Override
+    public boolean isChecked() {
+        return isChecked;
+    }
 
     @Override
     public void setChecked(boolean checked) {
@@ -44,11 +47,6 @@ public class CheckItemView extends FrameLayout implements Checkable {
             isChecked = checked;
             drawCheck();
         }
-    }
-
-    @Override
-    public boolean isChecked() {
-        return isChecked;
     }
 
     @Override

@@ -19,6 +19,7 @@ public class FanMainFragment extends Fragment {
 
     FragmentManager mFM;
     ContentSingListFragment mSLFragment;
+
     public FanMainFragment() {
         // Required empty public constructor
     }
@@ -28,7 +29,7 @@ public class FanMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_fan_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_fan_main, container, false);
         mFM = getChildFragmentManager();
         mFM.beginTransaction().add(R.id.container_fan, new ContentSingListFragment(), DefineContentType.FRAGMENT_SINGLE_LIST).commit();
         mSLFragment = (ContentSingListFragment) mFM.findFragmentByTag(DefineContentType.FRAGMENT_SINGLE_LIST);

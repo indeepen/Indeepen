@@ -21,7 +21,7 @@ import com.release.indeepen.content.singleList.ContentSingListFragment;
 /**
  * Created by Tacademy on 2015-10-30.
  */
-public class TripleGridView  extends FrameLayout implements View.OnClickListener{
+public class TripleGridView extends FrameLayout implements View.OnClickListener {
 
 
     TripleGridAdapter mAdapter;
@@ -36,20 +36,20 @@ public class TripleGridView  extends FrameLayout implements View.OnClickListener
 
     public TripleGridView(Context context) {
         super(context);
-        mContext= context;
+        mContext = context;
         init();
     }
 
 
     public TripleGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext= context;
+        mContext = context;
         init();
     }
 
     private void init() {
         inflate(getContext(), R.layout.view_triple_grid, this);
-        vTripleGrid = (GridView)findViewById(R.id.grid_item);
+        vTripleGrid = (GridView) findViewById(R.id.grid_item);
         vBtnArt = (Button) findViewById(R.id.btn_tab_art);
         vBtnFavorite = (Button) findViewById(R.id.btn_tab_favorite);
         vBtnMyCulture = (Button) findViewById(R.id.btn_tab_culture);
@@ -68,14 +68,13 @@ public class TripleGridView  extends FrameLayout implements View.OnClickListener
         mSinglListFragment = new ContentSingListFragment();
 
 
-
         vTripleGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-  //              Bundle bundle = new Bundle();
-  //              bundle.putSerializable(DefineContentType.FRAGMENT_SINGLE_LIST, (ContentData)mAdapter.getItem(position));
-  //              mSinglListFragment.setArguments(bundle);
-                if(null != CallbackListener.mFragnetListener ) {
+                //              Bundle bundle = new Bundle();
+                //              bundle.putSerializable(DefineContentType.FRAGMENT_SINGLE_LIST, (ContentData)mAdapter.getItem(position));
+                //              mSinglListFragment.setArguments(bundle);
+                if (null != CallbackListener.mFragnetListener) {
                     CallbackListener.mFragnetListener.onReplaceFragment(new ContentSingListFragment(), DefineContentType.CALLBACK_TO_SINGLE_LIST);
                 }
 
@@ -85,13 +84,14 @@ public class TripleGridView  extends FrameLayout implements View.OnClickListener
         test1();
     }
 
-    public void setData(ContentData data){
+    public void setData(ContentData data) {
         mData = data;
     }
+
     @Override
     public void onClick(View v) {
         mAdapter.removeAll();
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.btn_tab_art:
                 test1();
@@ -107,22 +107,23 @@ public class TripleGridView  extends FrameLayout implements View.OnClickListener
             case R.id.btn_tab_collabo:
                 Toast.makeText(getContext(), "서비스 준비중입니다.", Toast.LENGTH_SHORT).show();
                 break;
-            default: return;
+            default:
+                return;
         }
     }
 
-    void test1(){
+    void test1() {
 
-        for(int idx=0; idx<20; idx++){
+        for (int idx = 0; idx < 20; idx++) {
             ContentData data = new ContentData();
-            data.thIMG = DefineTest.ARR_IMG[((int)(Math.random()*10)%8)];
+            data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
             mAdapter.add(data);
         }
     }
 
-    void test2(){
+    void test2() {
 
-        for(int idx=0; idx<8; idx++){
+        for (int idx = 0; idx < 8; idx++) {
             ContentData data = new ContentData();
             data.thIMG = DefineTest.ARR_IMG2[idx];
             mAdapter.add(data);

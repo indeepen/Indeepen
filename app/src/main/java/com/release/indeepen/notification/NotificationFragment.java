@@ -17,9 +17,10 @@ import com.release.indeepen.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotificationFragment extends Fragment implements MainActivity.OnKeyBackPressedListener, CallbackListener.OnGoActivityListener{
+public class NotificationFragment extends Fragment implements MainActivity.OnKeyBackPressedListener, CallbackListener.OnGoActivityListener {
     FragmentManager mFM;
     boolean isFirst = false;
+
     public NotificationFragment() {
         // Required empty public constructor
     }
@@ -50,7 +51,7 @@ public class NotificationFragment extends Fragment implements MainActivity.OnKey
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setOnKeyBackPressedListener(this);
+        ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
         //CallbackListener.mFragnetListener = this;
     }
 

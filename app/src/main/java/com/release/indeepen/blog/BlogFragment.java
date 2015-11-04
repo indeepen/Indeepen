@@ -17,15 +17,15 @@ import com.release.indeepen.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentActionListener,MainActivity.OnKeyBackPressedListener, CallbackListener.OnReplaceFragmentListener{
+public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentActionListener, MainActivity.OnKeyBackPressedListener, CallbackListener.OnReplaceFragmentListener {
 
     FragmentManager mFM;
     boolean isFirst = false;
 
     @Override
     public void onFragmentActionListener(Fragment fragment, Intent intent, int type) {
-        if(DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND == type){
-           startActivity(intent);
+        if (DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND == type) {
+            startActivity(intent);
         }
     }
 
@@ -52,14 +52,14 @@ public class BlogFragment extends Fragment implements BlogIntroView.OnFragmentAc
     }
 
     private void init() {
-        mFM.beginTransaction().replace(R.id.container_blog,  new BlogMainFragment()).commit();
+        mFM.beginTransaction().replace(R.id.container_blog, new BlogMainFragment()).commit();
 
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setOnKeyBackPressedListener(this);
+        ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
         CallbackListener.mFragnetListener = this;
     }
 

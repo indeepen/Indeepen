@@ -15,7 +15,7 @@ public class SimpleImageAdapter extends BaseAdapter {
     List<Integer> items = new ArrayList<Integer>();
 
 
-    public void add(int data){
+    public void add(int data) {
         items.add(data);
     }
 
@@ -36,11 +36,11 @@ public class SimpleImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SimpleImageView view = (SimpleImageView)convertView;
-        if(null == view){
+        SimpleImageView view = (SimpleImageView) convertView;
+        if (null == view) {
             view = new SimpleImageView(parent.getContext());
         }
-        view.setData((int)getItem(position));
+        view.setData((int) getItem(position));
 
         return view;
     }

@@ -14,11 +14,11 @@ import java.util.List;
 /**
  * Created by lyo on 2015-11-01.
  */
-public class ContentSingleListAdapter extends BaseAdapter{
+public class ContentSingleListAdapter extends BaseAdapter {
 
     List<ContentData> items = new ArrayList<ContentData>();
 
-    public void add(ContentData data){
+    public void add(ContentData data) {
         items.add(data);
         notifyDataSetChanged();
     }
@@ -26,7 +26,7 @@ public class ContentSingleListAdapter extends BaseAdapter{
     @Override
     public int getItemViewType(int position) {
 
-        switch (((ContentData)getItem(position)).nArtType){
+        switch (((ContentData) getItem(position)).nArtType) {
             case DefineContentType.SINGLE_ART_TYPE_PAINT:
             case DefineContentType.SINGLE_ART_TYPE_PICTURE:
             case DefineContentType.SINGLE_ART_TYPE_MUSIC_PICTURE:
@@ -69,14 +69,14 @@ public class ContentSingleListAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         int nType = getItemViewType(position);
 
-        switch (nType){
+        switch (nType) {
             case DefineContentType.SINGLE_IMAGE:
-            default:{
-                ImageSingleListView view = (ImageSingleListView)convertView;
-                if(null == view){
+            default: {
+                ImageSingleListView view = (ImageSingleListView) convertView;
+                if (null == view) {
                     view = new ImageSingleListView(parent.getContext());
                 }
-                view.setData((ContentImageData)items.get(position));
+                view.setData((ContentImageData) items.get(position));
 
                 return view;
             }

@@ -4,28 +4,27 @@
     android:layout_height="80dp">
 
     <ImageView
+        android:id="@+id/img_push_text_thpro"
         android:layout_width="@dimen/my_profile_thumb"
         android:layout_height="@dimen/my_profile_thumb"
-        android:id="@+id/img_push_text_thpro"
         android:layout_centerVertical="true"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
         android:id="@+id/text_push_text_msg"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/img_push_text_thpro" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/img_push_text_thpro"
         android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
         android:id="@+id/text_push_text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/text_push_text_msg"
-        android:layout_toEndOf="@+id/text_push_text_msg" />
+        android:layout_toEndOf="@+id/text_push_text_msg"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 </merge>

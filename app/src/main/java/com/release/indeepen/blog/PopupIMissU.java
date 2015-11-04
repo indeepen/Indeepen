@@ -15,12 +15,13 @@ import com.release.indeepen.R;
  */
 public class PopupIMissU extends PopupWindow {
     Context mContext;
-    public PopupIMissU(Context context){
-       super(context);
-       // super(LayoutInflater.from(context).inflate(R.layout.popup_imissu, null), ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+    public PopupIMissU(Context context) {
+        super(context);
+        // super(LayoutInflater.from(context).inflate(R.layout.popup_imissu, null), ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         mContext = context;
         View view = LayoutInflater.from(context).inflate(R.layout.popup_imissu, null);
-        Button btn = (Button)view.findViewById(R.id.btn_pop_imissu_ok);
+        Button btn = (Button) view.findViewById(R.id.btn_pop_imissu_ok);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +30,7 @@ public class PopupIMissU extends PopupWindow {
             }
         });
 
-        btn = (Button)view.findViewById(R.id.btn_pop_imissu_no);
+        btn = (Button) view.findViewById(R.id.btn_pop_imissu_no);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

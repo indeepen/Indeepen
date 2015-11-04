@@ -15,6 +15,7 @@ public class NotiTextView extends RelativeLayout {
 
     ImageView vIMGPro, vIMGCon;
     TextView vTextMSG;
+
     public NotiTextView(Context context) {
         super(context);
 
@@ -26,15 +27,15 @@ public class NotiTextView extends RelativeLayout {
         init();
     }
 
-    private void init(){
+    private void init() {
         inflate(getContext(), R.layout.view_notify_text, this);
     }
 
-    public void setData(PushData data){
+    public void setData(PushData data) {
         vIMGPro = (ImageView) findViewById(R.id.img_push_text_thpro);
         vTextMSG = (TextView) findViewById(R.id.text_push_text_msg);
 
-        if(null != data) {
+        if (null != data) {
             vIMGPro.setImageResource(data.thProfile);
             vTextMSG.setText(data.sMSG);
         }
