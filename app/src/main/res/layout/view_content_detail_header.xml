@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="150dp"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/img_detail_image_thPro"
+            android:layout_width="@dimen/my_profile_thumb"
+            android:layout_height="@dimen/my_profile_thumb"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/text_detail_image_artist"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/text_detail_image_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignTop="@+id/img_detail_image_thPro"
+            android:layout_toEndOf="@+id/text_detail_image_text" />
+
+        <TextView
+            android:id="@+id/text_detail_image_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignBottom="@+id/img_detail_image_emotion"
+            android:layout_toEndOf="@+id/img_detail_image_thPro" />
+
+        <TextView
+            android:id="@+id/text_detail_image_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_below="@+id/img_detail_image_thPro"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="19dp" />
+
+        <ImageView
+            android:id="@+id/img_detail_image_emotion"
+            android:layout_width="@dimen/my_emotion"
+            android:layout_height="@dimen/my_emotion"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/img_detail_image_thPro" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/text_detail_image_text"
+            android:layout_alignEnd="@+id/img_detail_image_emotion">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/like"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/text_detail_image_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView6"
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/comment"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/text_detail_image_comm_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView8"
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/text_detail_image_option"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/option"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

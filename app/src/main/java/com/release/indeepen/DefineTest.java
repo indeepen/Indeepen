@@ -8,4 +8,6 @@ public interface DefineTest {
             R.drawable.th5, R.drawable.th6, R.drawable.th7, R.drawable.th8};
     int[] ARR_IMG2 = {R.drawable.th5, R.drawable.th7, R.drawable.th8, R.drawable.th3,
             R.drawable.th1, R.drawable.th6, R.drawable.th2, R.drawable.th4};
+    int[] USER_IMG={R.drawable.images, R.drawable.th1, R.drawable.th2, R.drawable.th3, R.drawable.th4};
+
 }

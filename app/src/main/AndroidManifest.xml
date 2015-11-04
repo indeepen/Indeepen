@@ -32,6 +32,8 @@
         <activity android:name=".user.UserInfoActivity"></activity>
         <activity android:name=".blog.BlogInCultureActivity"></activity>
         <activity android:name=".content.comment.CommentListActivity"></activity>
+        <activity android:name=".culture.CultureDetailActivity"></activity>
+        <activity android:name=".create.CreateInputCultureActivity"></activity>
     </application>
 
 </manifest>

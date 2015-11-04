@@ -84,7 +84,8 @@ public class SingleImageView extends LinearLayout implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_image_single_contents:
-            case R.id.text_image_single_text:{
+            case R.id.text_image_single_text:
+            case R.id.img_image_single_emotion :{
                 Intent mIntent = new Intent(getContext(), ContentDetailActivity.class);
                 mIntent.putExtra(DefineContentType.BUNDLE_DATA_DETAIL_IMAGE, mData);
                 getContext().startActivity(mIntent);
