@@ -5,8 +5,8 @@ package com.release.indeepen;
  */
 public interface DefineContentType {
 
-    int CALLBACK_TO_BLOG = 0;
-    int CALLBACK_TO_SINGLE_LIST = 1;
+    /*int CALLBACK_TO_BLOG = 0;
+    int CALLBACK_TO_SINGLE_LIST = 1;*/
 
     /* 싱글 태스크 관리 및 요청 정보*/
     int TO_SINGLE_LIST = 0;
@@ -17,6 +17,8 @@ public interface DefineContentType {
     int TO_DETAIL_MUSIC_VIDEO = 4;
     int TO_DETAIL_YOUTUBE = 5;
     int TO_DETAIL_CULTURE = 6;
+    int TO_SPACE = 7;
+    int TO_FAN_LIST = 8;
 
     String FRAGMENT_SINGLE_LIST = "singleList";
     String FRAGMENT_DETAIL_IMAGE = "detailIMG";
@@ -49,6 +51,9 @@ public interface DefineContentType {
     String MAIN_TAB_NOTIFICATION = "notification";
     String MAIN_TAB_MYBLOG = "myBlog";
 
+    String FRAGMENT_TAG_SEARCH = "search";
+    String FRAGMENT_TAG_FAN = "fan";
+
 
     /* 블로그 어댑터 관련 정의*/
     int BLOG_TYPE_COUNT = 2;
@@ -75,7 +80,7 @@ public interface DefineContentType {
     int SINGLE_ART_TYPE_MUSIC_PICTURE = 12;
     int SINGLE_ART_TYPE_MUSIC_VIDEO = 13;
     int SINGLE_ART_TYPE_MUSIC = 14;
-    int SINGLE_ART_TYPE_VIDEO = 15;
+    int SINGLE_ART_TYPE_YOUTUBE = 15;
     int SINGLE_ART_TYPE_CULTURE = 16;
     //........
 
@@ -111,11 +116,14 @@ public interface DefineContentType {
 
 /* 컨탠츠 디테일 관련 정의*/
 
-    String BUNDLE_DATA_DETAIL_IMAGE = "detailImage";
+   /* String BUNDLE_DATA_DETAIL_IMAGE = "detailImage";
     String BUNDLE_DATA_DETAIL_MUSIC = "detailMusic";
     String BUNDLE_DATA_DETAIL_MUSIC_VIDEO = "detailMusicVideo";
     String BUNDLE_DATA_DETAIL_YOUTUBE = "detailYoutube";
-    //int BUNDLE_DATA_DETAIL_IMAGE = "detail_image";
+    //int BUNDLE_DATA_DETAIL_IMAGE = "detail_image";*/
+
+    String BUNDLE_DATA_REQUEST = "bundleData";
+    String BUNDLE_DATA_TYPE = "bundleType";
 
     /* 사진확대*/
     String EXPAND_IMG = "expendImg";
@@ -130,6 +138,13 @@ public interface DefineContentType {
     String BLOG_MY_CULTURE = "My 문화";
     String BLOG_LIKE_CULTURE = "좋아요 문화";
 
+    String SEARCH_TAB_ALL = "전체";
+    String SEARCH_TAB_TAG = "해시태그";
+    String SEARCH_TAB_ARTIST = "예술가";
+    String SEARCH_TAB_SPACE = "공간";
 
 
+    /*onSaveInstanceState*/
+    String CREATE_IMAGE_DATA = "CREATE_IMAGE_DATA";
+    String CREATE_SAVE = "CREATE_SAVE";
 }

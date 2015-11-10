@@ -5,25 +5,30 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 
-import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.MainActivity;
 import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
-import com.release.indeepen.content.singleList.ContentSingListFragment;
+import com.release.indeepen.content.art.singleList.ContentSingListFragment;
+import com.release.indeepen.search.SearchResultFragment;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FanFragment extends Fragment implements MainTab, CallbackListener.OnReplaceFragmentListener, MainActivity.OnKeyBackPressedListener {
+public class FanFragment extends Fragment implements MainTab, MainActivity.OnKeyBackPressedListener {
 
     FragmentManager mFM;
-    ContentSingListFragment mSingleListF;
     boolean isFirst = false;
+    ImageView actionSearch;
+    ImageView actionRealSearch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,50 +42,83 @@ public class FanFragment extends Fragment implements MainTab, CallbackListener.O
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fan, container, false);
-        mSingleListF = new ContentSingListFragment();
-
-
+        actionSearch = (ImageView) getActivity().findViewById(R.id.img_main_search);
+        actionRealSearch = (ImageView) getActivity().findViewById(R.id.img_main_real_search);
         if (isFirst) {
             init();
             isFirst = false;
         }
 
+        mFM.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                checkBackStack();
+            }
+        });
+
         return view;
     }
 
     private void init() {
-        mFM.beginTransaction().replace(R.id.container_fan, mSingleListF).commit();
+        mFM.beginTransaction().replace(R.id.container_fan, new FanMainFragment(), DefineContentType.FRAGMENT_TAG_FAN).commit();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
+        checkBackStack();
+
     }
 
-    @Override
-    public void onReplaceFragment(Fragment fragment, int Type) {
-        switch (Type) {
-
-            case DefineContentType.CALLBACK_TO_SINGLE_LIST: {
-                if (CallbackListener.mFragnetListener instanceof FanFragment) {
-                    mFM.beginTransaction().addToBackStack(null).replace(R.id.container_fan, fragment).commitAllowingStateLoss();
-                }
-                break;
-            }
-            case DefineContentType.CALLBACK_TO_BLOG: {
-                if (CallbackListener.mFragnetListener instanceof FanFragment) {
-                    mFM.beginTransaction().addToBackStack(null).replace(R.id.container_fan, fragment).commitAllowingStateLoss();
-                }
-                break;
-            }
+    private void checkBackStack(){
+        int stackHeight = mFM.getBackStackEntryCount();
+        if (stackHeight > 0) { // if we have something on the stack (doesn't include the current shown fragment)
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            actionSearch.setVisibility(View.GONE);
+        }else {
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(false);
+            actionSearch.setVisibility(View.VISIBLE);
+            actionRealSearch.setVisibility(View.GONE);
         }
     }
 
 
     @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
-        CallbackListener.mFragnetListener = this;
+    public void onBack() {
+        boolean isPop = false;
+        Fragment fragment = mFM.findFragmentByTag( DefineContentType.FRAGMENT_TAG_FAN);
+        if(null != fragment){
+            if(null != ((FanMainFragment)fragment).emotion  && ((FanMainFragment)fragment).emotion.isShowing()){
+                ((FanMainFragment)fragment).emotion.dismiss();
+                isPop =true;
+            }
+            if(null != ((FanMainFragment)fragment).category  &&((FanMainFragment)fragment).category.isShowing()){
+                ((FanMainFragment)fragment).category.dismiss();
+                isPop =true;
+            }
+        }
+        fragment =  mFM.findFragmentByTag( DefineContentType.FRAGMENT_TAG_SEARCH);
+        if(null != fragment ){
+            if(null != ((SearchResultFragment)fragment).emotion  &&  ((SearchResultFragment)fragment).emotion.isShowing()){
+                ((SearchResultFragment)fragment).emotion.dismiss();
+                isPop =true;
+            }
+            if(null != ((SearchResultFragment)fragment).category  &&((SearchResultFragment)fragment).category.isShowing()){
+                ((SearchResultFragment)fragment).category.dismiss();
+                isPop =true;
+            }
+        }
+
+        if(false == isPop) {
+            if (((MainActivity) getActivity()).getOnKeyBackPressedListener() instanceof FanFragment) {
+                popFragmentStack();
+            }
+        }
     }
 
-    @Override
-    public void onBack() {
+    private void popFragmentStack(){
         if (((MainActivity) getActivity()).getOnKeyBackPressedListener() instanceof FanFragment) {
             if (mFM.getBackStackEntryCount() > 0) {
                 mFM.popBackStack();

@@ -10,5 +10,5 @@ import java.util.List;
  */
 public class ContentImageData extends ContentData{
 
-    public List<Integer> arrIMGs;
+    public List<String> arrIMGs;
 }

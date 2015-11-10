@@ -9,7 +9,7 @@ import android.widget.TabHost;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.R;
 import com.release.indeepen.blog.simpleList.TabsAdapter;
-import com.release.indeepen.content.singleList.ContentSingListFragment;
+import com.release.indeepen.culture.CultureFragment;
 
 public class BlogInCultureActivity extends AppCompatActivity {
 
@@ -28,13 +28,24 @@ public class BlogInCultureActivity extends AppCompatActivity {
         pager = (ViewPager) findViewById(R.id.pager_in_blog);
         mAdapter = new TabsAdapter(this, getSupportFragmentManager(), tabHost, pager);
 
-        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_MY_CULTURE).setIndicator(DefineContentType.BLOG_MY_CULTURE), ContentSingListFragment.class, null);
-        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_LIKE_CULTURE).setIndicator(DefineContentType.BLOG_LIKE_CULTURE), ContentSingListFragment.class, null);
+        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_MY_CULTURE).setIndicator(DefineContentType.BLOG_MY_CULTURE), CultureFragment.class, null);
+        mAdapter.addTab(tabHost.newTabSpec(DefineContentType.BLOG_LIKE_CULTURE).setIndicator(DefineContentType.BLOG_LIKE_CULTURE), CultureFragment.class, null);
 
         if (savedInstanceState != null) {
             tabHost.setCurrentTab(savedInstanceState.getInt("tabIndex"));
             mAdapter.onRestoreInstanceState(savedInstanceState);
         }
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+               if( tabHost.getCurrentTabTag().equals(DefineContentType.BLOG_MY_CULTURE)){
+                   //각각 다른정보 불러오기
+               }else{
+
+               }
+            }
+        });
     }
 
     @Override

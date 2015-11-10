@@ -1,12 +1,17 @@
 package com.release.indeepen.blog;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
@@ -19,7 +24,7 @@ public class BlogFragment extends Fragment implements MainTab, MainActivity.OnKe
 
     FragmentManager mFM;
     boolean isFirst = false;
-
+    ImageView actionSearch;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,45 +38,44 @@ public class BlogFragment extends Fragment implements MainTab, MainActivity.OnKe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blog, container, false);
-        //CallbackListener.setOnReplaceFragmentListener(this);
+        actionSearch = (ImageView) getActivity().findViewById(R.id.img_main_search);
         if (isFirst) {
             init();
             isFirst = false;
         }
 
+        mFM.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                checkBackStack();
+            }
+        });
         return view;
     }
 
     private void init() {
         mFM.beginTransaction().replace(R.id.container_blog, new BlogMainFragment()).commit();
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
-       // CallbackListener.mFragnetListener = this;
+        checkBackStack();
     }
 
-  /*  @Override
-    public void onReplaceFragment(Fragment fragment, int Type) {
-        switch (Type) {
-
-            case DefineContentType.CALLBACK_TO_SINGLE_LIST: {
-                if (CallbackListener.mFragnetListener instanceof BlogFragment) {
-                    mFM.beginTransaction().addToBackStack(null).replace(R.id.container_blog, fragment).commitAllowingStateLoss();
-                }
-                break;
-            }
-            case DefineContentType.CALLBACK_TO_BLOG: {
-                if (CallbackListener.mFragnetListener instanceof BlogFragment) {
-                    mFM.beginTransaction().addToBackStack(null).replace(R.id.container_blog, fragment).commitAllowingStateLoss();
-                }
-                break;
-            }
+    private void checkBackStack(){
+        int stackHeight = mFM.getBackStackEntryCount();
+        if (stackHeight > 0) { // if we have something on the stack (doesn't include the current shown fragment)
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            actionSearch.setVisibility(View.GONE);
+        } else {
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(false);
+            actionSearch.setVisibility(View.VISIBLE);
         }
-    }*/
+    }
 
     @Override
     public void onBack() {

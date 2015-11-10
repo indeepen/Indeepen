@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_all"
+        android:id="@+id/pop_emo_all"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_empty"
+        android:id="@+id/pop_emo_empty"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/pop_emo_all" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_happy"
+        android:id="@+id/pop_emo_happy"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/pop_emo_empty" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_love"
+        android:id="@+id/pop_emo_love"
+        android:layout_alignTop="@+id/pop_emo_sad"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_sad"
+        android:id="@+id/pop_emo_sad"
+        android:layout_below="@+id/pop_emo_empty"
+        android:layout_toEndOf="@+id/pop_emo_all" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/emo_angry"
+        android:id="@+id/pop_emo_angry"
+        android:layout_below="@+id/pop_emo_empty"
+        android:layout_toEndOf="@+id/pop_emo_empty" />
+</RelativeLayout>

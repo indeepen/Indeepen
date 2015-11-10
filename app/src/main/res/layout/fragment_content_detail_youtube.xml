@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.release.indeepen.content.art.detail.ContentDetailYoutubeFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <com.release.indeepen.content.art.detail.ContentDetailHeaderView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/container_detail_youtub"/>
+
+</LinearLayout>

@@ -6,17 +6,21 @@
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_user">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             android:id="@+id/image_user"
             android:src="@drawable/images"
+            android:scaleType="centerCrop"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="0dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,77 +50,87 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_culture_detail">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="목인과 홍갑 &apos;여유로운 시간&apos;"
+            android:id="@+id/text_title"
+            android:layout_marginLeft="0dp"
+            android:layout_alignBottom="@+id/image_ing"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/image_ing"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="132dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/image_ing"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="목인과 홍갑 &apos;여유로운 시간&apos;"
-                android:id="@+id/text_title" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:id="@+id/image_main"
-            android:src="@drawable/backsample" />
+            android:src="@drawable/backsample"
+            android:layout_marginLeft="0dp"
+            android:layout_below="@+id/text_title"
+            android:layout_alignParentStart="true" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="2015.11.24"
+            android:id="@+id/text_date"
+            android:layout_below="@+id/image_main"
+            android:layout_alignStart="@+id/image_ing" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2015.11.24"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/text_date" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="/ pm 8:00"
+            android:id="@+id/text_time"
+            android:layout_below="@+id/image_main"
+            android:layout_toEndOf="@+id/text_date" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="/ pm 8:00"
-                android:id="@+id/text_time"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/text_date" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="서울시 마포구 상수동 &apos;이리&apos;카페"
+            android:id="@+id/text_address"
+            android:layout_below="@+id/text_date"
+            android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="서울시 마포구 상수동 &apos;이리&apos;카페"
-                android:id="@+id/text_address"
-                android:layout_below="@+id/text_date"
-                android:layout_alignParentStart="true" />
-
-        </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"

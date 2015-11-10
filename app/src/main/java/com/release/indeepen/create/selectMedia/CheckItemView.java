@@ -29,8 +29,10 @@ public class CheckItemView extends FrameLayout implements Checkable {
 
     private void drawCheck() {
         if (isChecked) {
+
             checkView.setVisibility(VISIBLE);
             checkView.setAlpha(0.6f);
+
         } else {
             checkView.setVisibility(INVISIBLE);
         }

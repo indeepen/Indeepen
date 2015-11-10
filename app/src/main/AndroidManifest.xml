@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.release.indeepen">
+    package="com.release.indeepen" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,28 +12,40 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".content.detail.ContentDetailActivity"></activity>
-        <activity android:name=".content.detail.ExpandImageActivity"></activity>
-        <activity android:name=".blog.simpleList.SimpleTabUserListActivity"></activity>
-        <activity android:name=".blog.simpleList.SimpleSingleUserListActivity"></activity>
-        <activity android:name=".create.selectMedia.MediaSingleChoiceActivity"></activity>
-        <activity android:name=".user.UserInfoActivity"></activity>
-        <activity android:name=".blog.BlogInCultureActivity"></activity>
-        <activity android:name=".content.comment.CommentListActivity"></activity>
-        <activity android:name=".culture.CultureDetailActivity"></activity>
-        <activity android:name=".create.CreateInputCultureActivity"></activity>
+        <activity android:name=".content.art.detail.ContentDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".content.art.detail.ExpandImageActivity" />
+        <activity android:name=".blog.simpleList.SimpleTabUserListActivity" />
+        <activity android:name=".blog.simpleList.SimpleSingleUserListActivity" />
+        <activity android:name=".user.UserInfoActivity" />
+        <activity android:name=".blog.BlogInCultureActivity" />
+        <activity android:name=".content.comment.CommentListActivity" />
+        <activity android:name=".culture.CultureDetailActivity" />
+        <activity android:name=".create.CreateInputCultureActivity" />
+        <activity android:name=".CommentActivity" />
+        <activity android:name=".create.selectMedia.MediaSingleChoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".create.selectMedia.MediaMultiChoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".create.selectMedia.CreateImageContentActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".create.selectMedia.MediaMultiChoiceActivity">
+        </activity>
+        <activity android:name=".search.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

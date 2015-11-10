@@ -10,4 +10,9 @@ public interface DefineTest {
             R.drawable.th1, R.drawable.th6, R.drawable.th2, R.drawable.th4};
     int[] USER_IMG={R.drawable.images, R.drawable.th1, R.drawable.th2, R.drawable.th3, R.drawable.th4};
 
+    String[] ARR_PATH = {"drawable://"+R.drawable.th1,"drawable://"+R.drawable.th2
+            ,"drawable://"+R.drawable.th3,"drawable://"+R.drawable.th4
+            ,"drawable://"+R.drawable.th5,"drawable://"+R.drawable.th6
+    ,"drawable://"+R.drawable.th7,"drawable://"+R.drawable.th8};
+
 }

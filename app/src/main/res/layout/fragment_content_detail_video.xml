@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.release.indeepen.content.art.detail.ContentDetailVideoFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.release.indeepen.content.art.detail.ContentDetailHeaderView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        />
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/video_height"
+        android:id="@+id/videoView_detail"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

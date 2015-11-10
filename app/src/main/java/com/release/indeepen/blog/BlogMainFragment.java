@@ -6,17 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.DefineTest;
 import com.release.indeepen.MainActivity;
@@ -24,10 +21,9 @@ import com.release.indeepen.R;
 import com.release.indeepen.blog.simpleList.SimpleSingleUserListActivity;
 import com.release.indeepen.blog.simpleList.SimpleTabUserListActivity;
 import com.release.indeepen.content.ContentData;
-import com.release.indeepen.content.detail.ExpandImageActivity;
-import com.release.indeepen.content.singleList.ContentSingListFragment;
-import com.release.indeepen.content.tripleGrid.HeaderGridView;
-import com.release.indeepen.content.tripleGrid.TripleGridAdapter;
+import com.release.indeepen.content.art.detail.ExpandImageActivity;
+import com.release.indeepen.content.art.tripleGrid.HeaderGridView;
+import com.release.indeepen.content.art.tripleGrid.TripleGridAdapter;
 import com.release.indeepen.create.selectMedia.MediaSingleChoiceActivity;
 import com.release.indeepen.user.UserInfoActivity;
 
@@ -47,6 +43,7 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blog_main, container, false);
+
         vTripleGrid = (HeaderGridView) view.findViewById(R.id.grid_item);
         mAdapter = new TripleGridAdapter(getContext());
         vIntroView = new BlogIntroView(getContext());
@@ -59,57 +56,19 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
         vBtnFavorite = (Button) vIntroView.findViewById(R.id.btn_tab_favorite);
         vBtnMyCulture = (Button) vIntroView.findViewById(R.id.btn_tab_culture);
         vBtnCollabo = (Button) vIntroView.findViewById(R.id.btn_tab_collabo);
+
+        vIMGProBack.setOnClickListener(this);
+         vthPro.setOnClickListener(this);
         vBtnArt.setOnClickListener(this);
         vBtnFavorite.setOnClickListener(this);
         vBtnMyCulture.setOnClickListener(this);
         vBtnCollabo.setOnClickListener(this);
 
         Button btn = (Button) vIntroView.findViewById(R.id.btn_fanList);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mIntent = new Intent(getContext(), SimpleTabUserListActivity.class);
-                startActivity(mIntent);
-            }
-        });
-
+        btn.setOnClickListener(this);
 
         btn = (Button) vIntroView.findViewById(R.id.btn_imissyou);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isClick) {
-                    Intent mIntent = new Intent(getContext(), SimpleSingleUserListActivity.class);
-                    startActivity(mIntent);
-                } else {
-                    onConfirmDialog(v);
-                    isClick = true;
-                }
-            }
-        });
-
-
-        init();
-
-        return view;
-    }
-
-    private void init() {
-        test1();
-        vthPro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onProfileDialog();
-            }
-        });
-
-        vIMGProBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackgroundDialog();
-            }
-        });
-
+        btn.setOnClickListener(this);
         vTripleGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -122,6 +81,15 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
 
             }
         });
+
+        init();
+
+        return view;
+    }
+
+    private void init() {
+        test1();
+
     }
 
     public void onBackgroundDialog() {
@@ -151,7 +119,7 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
                 Intent mIntent;
                 switch (which) {
                     case 0: {
-                       mIntent = new Intent(getContext(), UserInfoActivity.class);
+                        mIntent = new Intent(getContext(), UserInfoActivity.class);
                        /* if(null != CallbackListener.mActivityListener) {
                             CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_FIXD_INFO);
                         }*/
@@ -183,9 +151,30 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
     }
 
     public void onConfirmDialog(View view) {
-        PopupIMissU popup = new PopupIMissU(getContext());
+      /*  PopupIMissU popup = new PopupIMissU(getContext());
         popup.setOutsideTouchable(true);
-        popup.showAtLocation(getView(), Gravity.CENTER, 0, 0);
+        popup.showAtLocation(getView(), Gravity.CENTER, 0, 0);*/
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle("응원 하시겠습니까?");
+       // builder.setMessage("응원 하시겠습니까?");
+        builder.setPositiveButton("아니", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getContext(), "안함", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        builder.setNeutralButton("응원한다", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getContext(), "사랑한다", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setCancelable(false);
+        builder.create().show();
+
     }
 
     public interface OnFragmentActionListener {
@@ -194,9 +183,14 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        mAdapter.removeAll();
-        switch (v.getId()) {
 
+        switch (v.getId()) {
+            case R.id.img_blog_thProfile:
+                onProfileDialog();
+                break;
+            case R.id.img_blog_background:
+                onBackgroundDialog();
+                break;
             case R.id.btn_tab_art:
                 test1();
                 break;
@@ -204,33 +198,44 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
                 test2();
 
                 break;
-            case R.id.btn_tab_culture:
+            case R.id.btn_tab_culture:{
                 Intent mIntent = new Intent(getContext(), BlogInCultureActivity.class);
                 startActivity(mIntent);
                 //CallbackListener.mActivityListener.onGoActivity(mIntent, DefineContentType.ACTIVITY_TYPE_FIXD_INFO);
                 break;
-            case R.id.btn_tab_collabo:
-                Toast.makeText(getContext(), "서비스 준비중입니다.", Toast.LENGTH_SHORT).show();
+            }
+            case R.id.btn_tab_collabo: {
+                //Toast.makeText(getContext(), "서비스 준비중입니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(getContext(), MainActivity.class);
+                mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.TYPE_ON_NEW_REPLACE);
+                mIntent.putExtra(DefineContentType.KEY_ON_NEW_WHERE, DefineContentType.TO_SPACE);
+                //mIntent.putExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL, ); // 이동시 다시 받아올 Data URL
+                startActivity(mIntent);
                 break;
+            }
+
+            case R.id.btn_fanList:{
+                Intent mIntent = new Intent(getContext(), SimpleTabUserListActivity.class);
+                startActivity(mIntent);
+                break;
+            }
+            case R.id.btn_imissyou:{
+                if (isClick) {
+                    Intent mIntent = new Intent(getContext(), SimpleSingleUserListActivity.class);
+                    startActivity(mIntent);
+                } else {
+                    onConfirmDialog(v);
+                    isClick = true;
+                }
+                break;
+            }
             default:
                 return;
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            switch (requestCode){
-                case DefineContentType.ACTIVITY_TYPE_PROFILE_BACKGROUND:{
-                    Toast.makeText(getContext(), data.getStringExtra(DefineContentType.KEY_ON_NEW_PUT_DATA) , Toast.LENGTH_SHORT).show();
-                    break;
-                }
-            }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
     void test1() {
-
+        mAdapter.removeAll();
         for (int idx = 0; idx < 20; idx++) {
             ContentData data = new ContentData();
             data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
@@ -239,7 +244,7 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
     }
 
     void test2() {
-
+        mAdapter.removeAll();
         for (int idx = 0; idx < 8; idx++) {
             ContentData data = new ContentData();
             data.thIMG = DefineTest.ARR_IMG2[idx];

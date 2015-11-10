@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
+import com.release.indeepen.create.selectMedia.MediaMultiChoiceActivity;
 
 
 /**
@@ -33,7 +34,7 @@ public class CreateFragment extends Fragment implements MainTab {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CreateInputCultureActivity.class);
+                Intent intent = new Intent(getContext(), MediaMultiChoiceActivity.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +42,7 @@ public class CreateFragment extends Fragment implements MainTab {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CreateInputCultureActivity.class);
+                Intent intent = new Intent(getActivity(), MediaMultiChoiceActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,6 +71,11 @@ public class CreateFragment extends Fragment implements MainTab {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

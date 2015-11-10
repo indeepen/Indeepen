@@ -1,33 +1,21 @@
 package com.release.indeepen.culture;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CultureLocalFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CultureLocalFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CultureLocalFragment extends android.support.v4.app.Fragment{
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class CultureLocalFragment extends Fragment implements MainActivity.OnKeyBackPressedListener {
     private static final String LOCAL = "local";
 
     // TODO: Rename and change types of parameters
     private String name;
+    FragmentManager mFM;
 
-    private OnFragmentInteractionListener mListener;
 
     public static CultureLocalFragment newInstance(String name) {
         CultureLocalFragment fragment = new CultureLocalFragment();
@@ -44,55 +32,53 @@ public class CultureLocalFragment extends android.support.v4.app.Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mFM = getChildFragmentManager();
+
         if (getArguments() != null) {
             name = getArguments().getString(LOCAL);
         }
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_culture_local, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+    @Override
+    public void onResume() {
+        ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
+        mFM.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                int stackHeight = mFM.getBackStackEntryCount();
+                if (stackHeight > 0) { // if we have something on the stack (doesn't include the current shown fragment)
+                    ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+                    ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                } else {
+                    ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(false);
+                }
+            }
+
+        });
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+    public void onBack() {
+        if (((MainActivity) getActivity()).getOnKeyBackPressedListener() instanceof CultureLocalFragment) {
+            getChildFragmentManager().popBackStack();
+            mFM = getChildFragmentManager();
+            Fragment fragment = this.getParentFragment();
+            fragment.getChildFragmentManager().popBackStack();
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
     }
 
 }

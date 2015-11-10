@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/layout_list_music"
+    >
+
+    <com.release.indeepen.content.art.singleList.SingleHeaderView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_single_music_header" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_single_music"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/img_single_forground"
+            android:scaleType="center"
+            android:layout_gravity="center"
+            android:alpha="0.6"
+            android:src="@drawable/ic_stub"
+            />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar_single_music"
+            android:indeterminate="false"
+            android:layout_gravity="center_horizontal|bottom" />
+
+    </FrameLayout>
+
+    <com.release.indeepen.content.art.singleList.SingleFooterView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_single_music_footer"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>

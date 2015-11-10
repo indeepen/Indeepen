@@ -3,8 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="com.release.indeepen.space.SpaceFragment">
+    tools:context="com.release.indeepen.space.SpaceFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-
+    <com.release.indeepen.content.art.tripleGrid.HeaderGridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/grid_space_item"
+        android:numColumns="3" />
 </FrameLayout>

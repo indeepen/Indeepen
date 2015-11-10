@@ -59,7 +59,7 @@
             android:layout_alignEnd="@+id/img_detail_image_emotion">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/text_detail_image_like_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -69,17 +69,9 @@
                 android:text="@string/like"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/text_detail_image_like_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textView6"
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/text_detail_image_comm_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -87,14 +79,6 @@
                 android:text="@string/comment"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/text_detail_image_comm_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textView8"
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/text_detail_image_option"

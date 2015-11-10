@@ -5,5 +5,7 @@
     <dimen name="my_fab_margin">16dp</dimen>
     <dimen name="my_profile_thumb">60dp</dimen>
     <dimen name="my_emotion">35dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="video_height">100dp</dimen>
 
 </resources>

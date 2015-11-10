@@ -74,7 +74,7 @@ public class NotificationMainFragment extends Fragment {
                         //mIntent.putExtra(DefineContentType.KEY_ON_NEW_GET_DATA_URL, ); // 이동시 다시 받아올 Data URL
                         startActivity(mIntent);
                     }
-                    case DefineContentType.SINGLE_ART_TYPE_VIDEO:{
+                    case DefineContentType.SINGLE_ART_TYPE_YOUTUBE:{
                         Intent mIntent = new Intent(getContext(), MainActivity.class);
                         mIntent.putExtra(DefineContentType.KEY_ON_NEW_REQUEST, DefineContentType.TYPE_ON_NEW_REPLACE);
                         mIntent.putExtra(DefineContentType.KEY_ON_NEW_WHERE, DefineContentType.TO_DETAIL_YOUTUBE);

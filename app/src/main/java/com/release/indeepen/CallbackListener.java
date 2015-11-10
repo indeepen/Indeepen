@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
  */
 public class CallbackListener {
 
-    public static OnReplaceFragmentListener mFragnetListener;
+    /*public static OnReplaceFragmentListener mFragnetListener;
     public static OnGoActivityListener mActivityListener;
 
 
@@ -26,5 +26,5 @@ public class CallbackListener {
 
     public interface OnGoActivityListener {
         void onGoActivity(Intent intent, int type);
-    }
+    }*/
 }

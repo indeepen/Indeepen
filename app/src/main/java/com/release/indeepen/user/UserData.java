@@ -1,6 +1,7 @@
 package com.release.indeepen.user;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by lyo on 2015-10-31.
@@ -15,9 +16,10 @@ public class UserData implements Serializable {
     public String sIntrodution;
     public String sName;
 
-    public int nUserkey;
-    public int[] nBlogKey;
-    public int nSearchKey;
+    public String sUserkey;
+    public ArrayList<String> nBlogKey;
+    public String sSearchKey; // 이게 뭐더라
+    public String sActiveBlogKey;
 
 
 }

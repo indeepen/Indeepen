@@ -10,24 +10,9 @@ import java.util.List;
 /**
  * Created by Lady on 2015. 11. 2..
  */
-public class CultureAdapter  extends BaseAdapter implements CultureItemView.OnImageClickListener{
+public class CultureAdapter  extends BaseAdapter{
     List<CultureItemData> items = new ArrayList<CultureItemData>();
 
-
-    public interface OnAdapterImageListener {
-        public void onAdapterImageClick(CultureAdapter adapter, CultureItemView view, CultureItemData data);
-    }
-    OnAdapterImageListener mListener;
-    public void setOnAdapterImageListener(OnAdapterImageListener listener) {
-        mListener = listener;
-    }
-
-    CultureItemView.OnImageClickListener mImageClickListener;
-    public void setOnImageClickListener(CultureItemView.OnImageClickListener listener) {
-        mImageClickListener = listener;
-        notifyDataSetChanged();
-        notifyDataSetInvalidated();
-    }
 
     public void add(CultureItemData item) {
         items.add(item);
@@ -59,12 +44,6 @@ public class CultureAdapter  extends BaseAdapter implements CultureItemView.OnIm
         }
         view.setItemData(items.get(position));
         return view;
-    }
-    @Override
-    public void onImageClick(CultureItemView view, CultureItemData data) {
-        if (mListener != null) {
-            mListener.onAdapterImageClick(this, view, data);
-        }
     }
 }
 

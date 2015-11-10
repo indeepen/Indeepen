@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.release.indeepen.DefineContentType;
@@ -39,7 +41,6 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_single_choice);
-
         vGridView = (GridView) findViewById(R.id.grid_single_choice);
         nCase = getIntent().getIntExtra(DefineContentType.SELECT_IMAGE, -1);
         Button btn = (Button) findViewById(R.id.btn_select);
@@ -56,6 +57,7 @@ public class MediaSingleChoiceActivity extends AppCompatActivity implements Load
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
                 if (columnIndex == dataColumnIndex) {
                     ImageView iv = (ImageView) view;
+
                     String path = cursor.getString(columnIndex);
                     Uri uri = Uri.fromFile(new File(path));
                     ImageLoader.getInstance().displayImage(uri.toString(), iv);

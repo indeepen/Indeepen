@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.release.indeepen.CallbackListener;
 import com.release.indeepen.DefineContentType;
@@ -18,9 +19,10 @@ import com.release.indeepen.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotificationFragment extends Fragment implements MainTab, MainActivity.OnKeyBackPressedListener, CallbackListener.OnGoActivityListener {
+public class NotificationFragment extends Fragment implements MainTab, MainActivity.OnKeyBackPressedListener/*, CallbackListener.OnGoActivityListener*/ {
     FragmentManager mFM;
     boolean isFirst = false;
+    ImageView actionSearch;
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -38,10 +40,20 @@ public class NotificationFragment extends Fragment implements MainTab, MainActiv
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
+
+        actionSearch = (ImageView) getActivity().findViewById(R.id.img_main_search);
+
         if (isFirst) {
             init();
             isFirst = false;
         }
+
+        mFM.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                checkBackStack();
+            }
+        });
         return view;
     }
 
@@ -53,7 +65,21 @@ public class NotificationFragment extends Fragment implements MainTab, MainActiv
     public void onResume() {
         super.onResume();
         ((MainActivity) getActivity()).setOnKeyBackPressedListener(this);
-        //CallbackListener.mFragnetListener = this;
+        checkBackStack();
+
+    }
+
+    private void checkBackStack(){
+        int stackHeight = mFM.getBackStackEntryCount();
+        if (stackHeight > 0) { // if we have something on the stack (doesn't include the current shown fragment)
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            actionSearch.setVisibility(View.GONE);
+        } else {
+            ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            ((MainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(false);
+            actionSearch.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -83,7 +109,7 @@ public class NotificationFragment extends Fragment implements MainTab, MainActiv
         }
     }*/
 
-    @Override
+   /* @Override
     public void onGoActivity(Intent intent, int type) {
         switch (type) {
 
@@ -92,7 +118,7 @@ public class NotificationFragment extends Fragment implements MainTab, MainActiv
                 break;
             }
         }
-    }
+    }*/
 
     @Override
     public int getContainer() {
