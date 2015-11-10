@@ -216,6 +216,7 @@ public class SingleYoutubeView  extends LinearLayout implements View.OnClickList
         if (null == data) return;
         mData = data;
         vThPro.setImageResource(data.thProfile);
+
       /*  final YouTubeThumbnailLoader.OnThumbnailLoadedListener  onThumbnailLoadedListener = new YouTubeThumbnailLoader.OnThumbnailLoadedListener(){
             @Override
             public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
