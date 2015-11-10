@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\develop\Android\indeeProject\Indeepen_1110\imageloader\src\main\assets"/></dataSet><dataSet config="debug"><source path="E:\develop\Android\indeeProject\Indeepen_1110\imageloader\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\develop\Android\Indeepens\imageloader\src\main\assets"/></dataSet><dataSet config="debug"><source path="E:\develop\Android\Indeepens\imageloader\src\debug\assets"/></dataSet></merger>
