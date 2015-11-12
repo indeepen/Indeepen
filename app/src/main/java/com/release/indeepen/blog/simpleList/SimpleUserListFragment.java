@@ -58,7 +58,7 @@ public class SimpleUserListFragment extends Fragment {
         // mAdapter.removeAll();
         for (int idx = 0; idx < 13; idx++) {
             UserData data = new UserData();
-            data.thProfile = DefineTest.ARR_IMG2[(int) (Math.random() * 10) % 8];
+            //data.thProfile = DefineTest.ARR_IMG2[(int) (Math.random() * 10) % 8];
             data.sArtist = "이름 - " + idx;
             mAdapter.add(data);
         }

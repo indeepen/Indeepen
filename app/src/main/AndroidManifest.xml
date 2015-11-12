@@ -24,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".content.art.detail.ContentDetailActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity
+            android:name=".content.art.detail.ContentDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".content.art.detail.ExpandImageActivity" />
         <activity android:name=".blog.simpleList.SimpleTabUserListActivity" />
         <activity android:name=".blog.simpleList.SimpleSingleUserListActivity" />
@@ -35,16 +36,22 @@
         <activity android:name=".culture.CultureDetailActivity" />
         <activity android:name=".create.CreateInputCultureActivity" />
         <activity android:name=".CommentActivity" />
-        <activity android:name=".create.selectMedia.MediaSingleChoiceActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".create.selectMedia.MediaMultiChoiceActivity"
+        <activity
+            android:name=".create.selectMedia.MediaSingleChoiceActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".create.selectMedia.CreateImageContentActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".create.selectMedia.MediaMultiChoiceActivity">
-        </activity>
-        <activity android:name=".search.SearchActivity"
+        <activity
+            android:name=".create.selectMedia.MediaMultiChoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".create.selectMedia.CreateImageContentActivity"
+            android:parentActivityName=".create.selectMedia.MediaMultiChoiceActivity"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".search.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".create.selectMedia.MusicChoiceActivity" >
         </activity>
     </application>
 

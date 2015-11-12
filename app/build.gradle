@@ -29,4 +29,5 @@ dependencies {
     compile project(':imageloader')
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile project(':androidAsyncHttps')
+    compile 'com.google.code.gson:gson:2.4'
 }

@@ -56,7 +56,7 @@ public class TripleGridAdapter extends BaseAdapter {
 
         //view.setIMG(items.get(position).thIMG);
 
-        view.setIMG(items.get(position).thIMG);
+        //view.setIMG(items.get(position).thIMG);
         return view;
     }
 

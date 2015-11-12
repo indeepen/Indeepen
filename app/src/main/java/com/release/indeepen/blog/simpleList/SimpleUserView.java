@@ -35,7 +35,7 @@ public class SimpleUserView extends RelativeLayout {
     }
 
     public void setData(UserData data) {
-        vThPro.setImageResource(data.thProfile);
+        //vThPro.setImageResource(data.thProfile);
         vTextArtist.setText(data.sArtist);
     }
 }
