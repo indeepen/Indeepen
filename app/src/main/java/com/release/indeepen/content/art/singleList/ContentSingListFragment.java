@@ -1,6 +1,7 @@
 package com.release.indeepen.content.art.singleList;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,14 +10,23 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.release.indeepen.DefineContentType;
-import com.release.indeepen.DefineTest;
 import com.release.indeepen.R;
+import com.release.indeepen.content.ContentData;
 import com.release.indeepen.content.art.ContentImageData;
 import com.release.indeepen.content.art.ContentMusicData;
 import com.release.indeepen.content.art.ContentVideoData;
 import com.release.indeepen.content.art.ContentYoutubeData;
+import com.release.indeepen.culture.CultureItemData;
+import com.release.indeepen.management.networkManager.NetworkProcess;
+import com.release.indeepen.management.networkManager.NetworkRequest;
+import com.release.indeepen.management.networkManager.netArt.ArtListRequest;
+import com.release.indeepen.management.networkManager.netArt.ArtListController;
+import com.release.indeepen.management.networkManager.netArt.data.ListResult;
+import com.release.indeepen.management.networkManager.netArt.data.Resources;
+import com.release.indeepen.management.networkManager.netArt.data.Result;
+import com.release.indeepen.youtube.DefineNetwork;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,14 +50,95 @@ public class ContentSingListFragment extends Fragment {
 
         mAdapter = new ContentSingleListAdapter();
         vList.setAdapter(mAdapter);
-
-
         init();
         return view;
     }
+    private void addData(ListResult arrListResult){
+
+        for(Result contens:arrListResult.arrArts){
+            CultureItemData mCultureData;
+            ContentImageData mIMGData;
+            ContentVideoData mVideoData;
+            ContentMusicData mMusicData;
+            ContentYoutubeData mYoutubeData;
+            ContentData mData = null;
+            if(0 == contens.mPostinfo.nPostType){
+                mData = new CultureItemData();
+                mData.nArtType = DefineContentType.SINGLE_ART_TYPE_CULTURE;
+            }
+
+            switch (contens.mPostinfo.mWork.nArtType){
+                case DefineContentType.SINGLE_ART_TYPE_PAINT:
+                case DefineContentType.SINGLE_ART_TYPE_PICTURE:
+                case DefineContentType.SINGLE_ART_TYPE_MUSIC_PICTURE:{
+                    mData = new ContentImageData();
+                    ((ContentImageData)mData).arrIMGs = new ArrayList<String>();
+                    for(Resources resources: contens.mPostinfo.arrResources){
+                        if(resources.sFileType.contains("image")){
+                            ((ContentImageData)mData).arrIMGs.add(Uri.parse(resources.sPath).toString());
+                        }
+                    }
+                    break;
+                }
+                case DefineContentType.SINGLE_ART_TYPE_MUSIC_VIDEO:{
+                    mData = new ContentVideoData();
+                    break;
+                }
+                case DefineContentType.SINGLE_ART_TYPE_MUSIC:{
+                    mData = new ContentMusicData();
+                    break;
+                }
+                case DefineContentType.SINGLE_ART_TYPE_YOUTUBE:{
+                    mData = new ContentYoutubeData();
+                    break;
+                }
+            }
+
+            mData.sContentKey = contens.mPostinfo.sContentKey;
+            mData.nArtType = contens.mPostinfo.mWork.nArtType;
+            mData.nCommentCount = contens.nCommentCnt;
+            mData.sText = contens.mPostinfo.sContent;
+
+
+            mData.mUserData.sArtist = contens.mPostinfo.mWriter.sArtist;
+            mData.mUserData.sBlogKey = contens.mPostinfo.mWriter.sBlogKey;
+            mData.mUserData.sUserkey = contens.mPostinfo.mWriter.sUserkey;
+            mData.mUserData.thProfile = Uri.parse(contens.mPostinfo.mWriter.Thprofile).toString();
+            mData.nEmotion = contens.mPostinfo.mWork.nEmotion;
+            mData.dWriteDate = Long.parseLong(contens.mPostinfo.sCreateAt);
+            mData.arrLikes = contens.mPostinfo.arrLikes;
+            mData.nLikeCount = contens.mPostinfo.arrLikes.size();
+            mData.arrComment = contens.arrComments;
+        }
+    }
+
+
 
     private void init() {
-        ContentYoutubeData youtubeData = new ContentYoutubeData();
+
+        ArtListRequest request = new ArtListRequest();
+        ArtListController.getInstance().getArtList(request, new NetworkProcess.OnResultListener<ListResult>() {
+            @Override
+            public void onSuccess(NetworkRequest<ListResult> request, ListResult result) {
+                ListResult arrListResult;
+                arrListResult = result;
+                addData(arrListResult);
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ListResult> request, int code) {
+
+            }
+        });
+
+        //test1();
+
+    }
+
+    private void test1(){
+
+
+       /* ContentYoutubeData youtubeData = new ContentYoutubeData();
         youtubeData.nArtType = DefineContentType.SINGLE_ART_TYPE_YOUTUBE;
         youtubeData.thProfile = DefineTest.ARR_IMG2[3];
         youtubeData.sPath = "YQHsXMglC9A";
@@ -87,7 +178,7 @@ public class ContentSingListFragment extends Fragment {
             mData.thProfile = DefineTest.ARR_IMG2[idx % 8];
             mData.arrIMGs = Arrays.asList(DefineTest.ARR_PATH);
             mAdapter.add(mData);
-        }
+        }*/
     }
 
 }

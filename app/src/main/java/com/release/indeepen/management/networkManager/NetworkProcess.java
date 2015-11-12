@@ -2,6 +2,11 @@ package com.release.indeepen.management.networkManager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.preference.PreferenceActivity;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.TextHttpResponseHandler;
+import com.release.indeepen.youtube.DefineNetwork;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,10 +18,7 @@ import java.net.URL;
  * Created by lyo on 2015-11-10.
  */
 public class NetworkProcess<T> implements Runnable {
-    public interface OnResultListener<T> {
-        public void onSuccess(NetworkRequest<T> request, T result);
-        public void onFail(NetworkRequest<T> request, int code);
-    }
+
 
     Handler mHandler = new Handler(Looper.getMainLooper());
     NetworkRequest<T> request;
@@ -27,6 +29,11 @@ public class NetworkProcess<T> implements Runnable {
         this.listener = listener;
     }
 
+    public interface OnResultListener<T> {
+        public void onSuccess(NetworkRequest<T> request, T result);
+        public void onFail(NetworkRequest<T> request, int code);
+    }
+
     @Override
     public void run() {
         try {
@@ -34,10 +41,13 @@ public class NetworkProcess<T> implements Runnable {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             request.setRequstMethod(conn);
             request.setOutput(conn);
+
             int code = conn.getResponseCode();
+
             if (code == HttpURLConnection.HTTP_OK) {
                 InputStream is = conn.getInputStream();
                 final T object = request.parsing(is);
+
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {

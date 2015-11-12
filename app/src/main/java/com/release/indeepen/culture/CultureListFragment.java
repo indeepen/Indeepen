@@ -50,8 +50,8 @@ public class CultureListFragment extends Fragment {
     private void initData() {
         for (int i = 0; i < 20; i++) {
             CultureItemData mData = new CultureItemData();
-            mData.thIMG = DefineTest.USER_IMG[i % 5];
-            mData.sArtist= "";
+            //mData.thIMG = DefineTest.USER_IMG[i % 5];
+            //mData.sArtist= "";
            // mData.dWriteDate = "11:00";
             mData.feeimage = getResources().getDrawable(R.drawable.th1);
             mData.ingimage = getResources().getDrawable(R.drawable.th2);

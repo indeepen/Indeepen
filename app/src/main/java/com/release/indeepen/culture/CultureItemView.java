@@ -99,8 +99,8 @@ public class CultureItemView extends LinearLayout implements View.OnClickListene
 
     public void setItemData(CultureItemData data) {
         mData = data;
-        image_user.setImageResource(data.thIMG);
-        text_username.setText(data.sArtist);
+        //image_user.setImageResource(data.thIMG);
+        //text_username.setText(data.sArtist);
         text_comment.setText(data.nCommentCount+"");
         //   text_uploadtime.setText(data.dWriteDate);
     }

@@ -144,8 +144,8 @@ public class CreateImageContentActivity extends AppCompatActivity implements Vie
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mBlogData = (BlogData) popupSelectBlog.mAdapter.getItem(position);
-                mCreateData.sActiveBlogKey = mBlogData.sBlogkey;
-                mCreateData.sArtist = mBlogData.sName;
+                //mCreateData.sActiveBlogKey = mBlogData.sBlogkey;
+                //mCreateData.sArtist = mBlogData.sName;
                 vTextBlog.setText(mBlogData.sName);
                 if (!TextUtils.isEmpty(mBlogData.sIMGPath)) {
                     ImageLoader.getInstance().displayImage(mBlogData.sIMGPath.toString(), vImgBlog);

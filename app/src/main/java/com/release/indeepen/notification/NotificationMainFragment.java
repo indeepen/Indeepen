@@ -103,7 +103,7 @@ public class NotificationMainFragment extends Fragment {
             PushData mData = new PushData();
             mData.nPushType = 1;
             mData.nContentType = DefineContentType.SINGLE_ART_TYPE_PICTURE;
-            mData.thProfile = DefineTest.ARR_IMG[idx];
+            //mData.thProfile = DefineTest.ARR_IMG[idx];
             mData.sMSG = idx + "";
             mNotiAdapter.add(mData);
         }

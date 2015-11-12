@@ -5,22 +5,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.DefineTest;
 import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
-import com.release.indeepen.blog.BlogFragment;
-import com.release.indeepen.content.ContentData;
 import com.release.indeepen.content.art.ContentImageData;
 import com.release.indeepen.content.art.detail.ContentDetailActivity;
 import com.release.indeepen.content.comment.CommentListActivity;
+import com.release.indeepen.management.dateManager.DateManager;
+
+import java.util.GregorianCalendar;
 
 /**
  * Created by lyo on 2015-11-01.
@@ -33,7 +34,8 @@ public class SingleImageView extends LinearLayout implements View.OnClickListene
     SingleHeaderView vHeader;
     SingleFooterView vFooter;
     // Bundle mBundle;
-
+    TextView[] comments= {vTextCommCon1, vTextCommCon2};
+    TextView[] commentUser= {vTextCommUser1, vTextCommUser2};
     public SingleImageView(Context context) {
         super(context);
         init();
@@ -193,8 +195,26 @@ public class SingleImageView extends LinearLayout implements View.OnClickListene
     public void setData(ContentImageData data) {
         if (null == data) return;
         mData = data;
-        vThPro.setImageResource(data.thProfile);
-        vIMGContent.setImageResource(DefineTest.ARR_IMG[(int) (Math.random() * 10) % 8]);
+        vTextArtist.setText(mData.mUserData.sArtist);
+        ImageLoader.getInstance().displayImage(mData.mUserData.thProfile, vThPro);
+        vTextDate.setText(DateManager.getInstance().getTime(System.currentTimeMillis() - (120 * 1000))); // test
+        vText.setText(mData.sText);
+        if(0 < mData.arrComment.size()) {
+            vTextCommCon1.setText(mData.arrComment.get(0).sComm);
+            vTextCommUser1.setText(mData.arrComment.get(0).mWriter.sArtist);
+            vTextCommCon2.setText(mData.arrComment.get(1).sComm);
+            vTextCommUser2.setText(mData.arrComment.get(0).mWriter.sArtist);
+        }else{
+            vTextCommCon1.setVisibility(GONE);
+            vTextCommUser1.setVisibility(GONE);
+            vTextCommCon2.setVisibility(GONE);
+            vTextCommUser2.setVisibility(GONE);
+        }
+        ImageLoader.getInstance().displayImage(data.arrIMGs.get(0), vIMGContent);
+
     }
+
+
+
 
 }

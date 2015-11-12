@@ -189,7 +189,7 @@ public class SingleVideoView  extends LinearLayout implements View.OnClickListen
     public void setData(ContentVideoData data) {
         if (null == data) return;
         mData = data;
-        vThPro.setImageResource(data.thProfile);
+        //vThPro.setImageResource(data.thProfile);
         //vPlayer.setVideoURI(data.videoData);
 
         String UrlPath = "android.resource://com.release.indeepen/raw/video";

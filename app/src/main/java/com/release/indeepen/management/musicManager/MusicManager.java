@@ -133,10 +133,10 @@ public class MusicManager {
 
     public void setMyURL(String url) {
 
-        mPlayer = getMusicPlayer();
-
         try {
+            reset();
             mPlayer.setDataSource(url);
+            mPlayer.prepare();
             mState = PlayState.PREPARED;
         } catch (IOException e) {
             e.printStackTrace();

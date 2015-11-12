@@ -87,7 +87,7 @@ public class ContentDetailVideoFragment extends Fragment implements View.OnClick
     }
 
     private void setData(ContentVideoData data) {
-        vThPro.setImageResource(data.thProfile);
+        //vThPro.setImageResource(data.thProfile);
         String UrlPath = "android.resource://com.release.indeepen/raw/video";
         Uri video_uri = Uri.parse(UrlPath);
         vPlayer.setVideoURI(video_uri);

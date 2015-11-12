@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.release.indeepen.MainTab;
 import com.release.indeepen.R;
 import com.release.indeepen.create.selectMedia.MediaMultiChoiceActivity;
+import com.release.indeepen.create.selectMedia.MusicChoiceActivity;
 
 
 /**
@@ -50,7 +51,7 @@ public class CreateFragment extends Fragment implements MainTab {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CreateInputCultureActivity.class);
+                Intent intent = new Intent(getActivity(), MusicChoiceActivity.class);
                 startActivity(intent);
             }
         });

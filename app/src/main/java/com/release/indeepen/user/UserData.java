@@ -9,16 +9,16 @@ import java.util.ArrayList;
 public class UserData implements Serializable {
 
     public String sArtist;
-    public int thProfile;
-    public int thBackground;
+    public String thProfile;
+    public String thBackground;
     public String sEmail;
     public String sPhoneNum;
     public String sIntrodution;
     public String sName;
 
     public String sUserkey;
-    public ArrayList<String> nBlogKey;
-    public String sSearchKey; // 이게 뭐더라
+    public String sBlogKey;
+    public ArrayList<String> arrBlogKeys;
     public String sActiveBlogKey;
 
 

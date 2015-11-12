@@ -43,8 +43,7 @@ public interface DefineContentType {
     String KEY_ON_NEW_WHERE = "WHERE";
 
 
-
-/* 메인 탭 관련 정의*/
+    /* 메인 탭 관련 정의*/
     String MAIN_TAB_CULTURE = "culture";
     String MAIN_TAB_FAN = "fan";
     String MAIN_TAB_CREATE = "create";
@@ -62,7 +61,7 @@ public interface DefineContentType {
     int BLOG_INTRO_ART = 1;
 
 
-/*  comment 관련 리스트  정의*/
+    /*  comment 관련 리스트  정의*/
 
     int COMMENT_TYPE_COUNT = 1;
 
@@ -75,6 +74,7 @@ public interface DefineContentType {
     int SINGLE_YOUTUBE = 3;
     int SINGLE_CULTURE = 4;
 
+
     int SINGLE_ART_TYPE_PAINT = 10;
     int SINGLE_ART_TYPE_PICTURE = 11;
     int SINGLE_ART_TYPE_MUSIC_PICTURE = 12;
@@ -84,6 +84,9 @@ public interface DefineContentType {
     int SINGLE_ART_TYPE_CULTURE = 16;
     //........
 
+    /* 서버 쪽 타입*/
+    int POST_TYPE_ART = 0;
+    int POST_TYPE_CULTURE = 1;
 
     /* 알림 관련 정의*/
     int NOTI_TYPE_COUNT = 2;
@@ -114,7 +117,7 @@ public interface DefineContentType {
     int NOTI_TYPE_MISSU_SPACE = 8;
 
 
-/* 컨탠츠 디테일 관련 정의*/
+    /* 컨탠츠 디테일 관련 정의*/
 
    /* String BUNDLE_DATA_DETAIL_IMAGE = "detailImage";
     String BUNDLE_DATA_DETAIL_MUSIC = "detailMusic";

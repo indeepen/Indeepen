@@ -15,18 +15,22 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.release.indeepen.DefineContentType;
 import com.release.indeepen.MainActivity;
 import com.release.indeepen.R;
 import com.release.indeepen.content.art.ContentMusicData;
 import com.release.indeepen.content.art.detail.ContentDetailActivity;
 import com.release.indeepen.content.comment.CommentListActivity;
+import com.release.indeepen.management.dateManager.DateManager;
 import com.release.indeepen.management.musicManager.MusicManager;
+import com.release.indeepen.management.networkManager.netArt.data.Comments;
 
 /**
  * Created by lyo on 2015-11-05.
  */
 public class SingleMusicView extends LinearLayout implements View.OnClickListener {
+
 
     ImageView vThPro, vIMGEmotion, vBackground, vForeground;
     TextView vTextArtist, vTextDate, vText, vTextLike, vTextComm, vTextOption, vTextCommUser1, vTextCommUser2, vTextCommCon1, vTextCommCon2;
@@ -37,7 +41,8 @@ public class SingleMusicView extends LinearLayout implements View.OnClickListene
     AudioManager mAM;
 
     MusicManager playerManager;
-
+    TextView[] comments;
+    TextView[] commentUser;
     public SingleMusicView(Context context) {
         super(context);
         init();
@@ -84,6 +89,9 @@ public class SingleMusicView extends LinearLayout implements View.OnClickListene
         vTextCommCon1 = (TextView) vFooter.findViewById(R.id.text_image_single_comm1);
         vTextCommCon2 = (TextView) vFooter.findViewById(R.id.text_image_single_comm2);
 
+        comments = new TextView[]{vTextCommCon1, vTextCommCon2};
+        commentUser = new TextView[]{vTextCommUser1, vTextCommUser2};
+
         vTextCommUser1.setOnClickListener(this);
         vTextCommUser2.setOnClickListener(this);
         vTextCommCon1.setOnClickListener(this);
@@ -91,6 +99,7 @@ public class SingleMusicView extends LinearLayout implements View.OnClickListene
         vTextLike.setOnClickListener(this);
         vTextComm.setOnClickListener(this);
         vTextOption.setOnClickListener(this);
+
     }
 
     @Override
@@ -205,15 +214,26 @@ public class SingleMusicView extends LinearLayout implements View.OnClickListene
     public void setData(ContentMusicData data) {
         if (null == data) return;
         mData = data;
-        vThPro.setImageResource(data.thProfile);
-        vBackground.setImageResource(data.sMusicBackIMG);
+        vTextArtist.setText(mData.mUserData.sArtist);
+        ImageLoader.getInstance().displayImage(mData.mUserData.thProfile, vThPro);
+        ImageLoader.getInstance().displayImage(mData.sMusicBackIMG, vBackground);
         vForeground.setVisibility(VISIBLE);
         playerManager = MusicManager.getMusicManager();
-        //String UrlPath = "android.resource://com.release.indeepen/raw/sample";
-        Uri video_uri = Uri.parse(data.sMusicPath);
-        playerManager.setMyURI(video_uri);
+        playerManager.setMyURL(mData.sMusicPath);
         playerManager.init(vSeek);
         vSeek.setProgress(0);
+        vTextDate.setText(DateManager.getInstance().getTime(System.currentTimeMillis() - (8000 * 1000))); // test
+        vText.setText(mData.sText);
+        if(0 < mData.arrComment.size()) {
+            int idx=0;
+            for(Comments comm : mData.arrComment) {
+                commentUser [idx].setVisibility(VISIBLE);
+                comments[idx].setVisibility(VISIBLE);
+                commentUser [idx].setText(comm.mWriter.sArtist);
+                comments[idx].setText(comm.sComm);
+                idx++;
+            }
+        }
     }
 
 }

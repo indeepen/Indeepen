@@ -75,7 +75,7 @@ public class ContentDetailYoutubeFragment extends Fragment implements View.OnCli
 
     }
     private void setData(ContentYoutubeData data) {
-        vThPro.setImageResource(data.thProfile);
+        //vThPro.setImageResource(data.thProfile);
 
     }
 

@@ -86,8 +86,8 @@ public class ContentDetailMusicFragment extends Fragment  implements View.OnClic
     private void setData(ContentMusicData data) {
         if (null == data) return;
         mData = data;
-        vThPro.setImageResource(data.thProfile);
-        vBackground.setImageResource(data.sMusicBackIMG);
+        //vThPro.setImageResource(data.thProfile);
+        //vBackground.setImageResource(data.sMusicBackIMG);
         vForeground.setVisibility(View.VISIBLE);
         playerManager = MusicManager.getMusicManager();
         //String UrlPath = "android.resource://com.release.indeepen/raw/sample";

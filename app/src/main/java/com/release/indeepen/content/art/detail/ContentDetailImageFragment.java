@@ -90,7 +90,7 @@ public class ContentDetailImageFragment extends Fragment implements View.OnClick
     }
 
     private void setData(ContentImageData data) {
-        vThPro.setImageResource(data.thProfile);
+        //vThPro.setImageResource(data.thProfile);
 
         for (int idx = 0; idx < data.arrIMGs.size(); idx++) {
             mAdapter.add(data.arrIMGs.get(idx));

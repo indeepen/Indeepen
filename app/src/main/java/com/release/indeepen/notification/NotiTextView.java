@@ -36,7 +36,7 @@ public class NotiTextView extends RelativeLayout {
         vTextMSG = (TextView) findViewById(R.id.text_push_text_msg);
 
         if (null != data) {
-            vIMGPro.setImageResource(data.thProfile);
+            //vIMGPro.setImageResource(data.thProfile);
             vTextMSG.setText(data.sMSG);
         }
     }

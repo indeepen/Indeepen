@@ -34,7 +34,7 @@ public class NotiImageView extends RelativeLayout {
     }
 
     public void setData(PushData data) {
-        vIMGPro.setImageResource(data.thProfile);
+       // vIMGPro.setImageResource(data.thProfile);
         vTextMSG.setText(data.sMSG);
     }
 

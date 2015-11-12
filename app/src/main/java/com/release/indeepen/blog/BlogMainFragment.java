@@ -238,7 +238,7 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
         mAdapter.removeAll();
         for (int idx = 0; idx < 20; idx++) {
             ContentData data = new ContentData();
-            data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
+            //data.thIMG = DefineTest.ARR_IMG[((int) (Math.random() * 10) % 8)];
             mAdapter.add(data);
         }
     }
@@ -247,7 +247,7 @@ public class BlogMainFragment extends Fragment  implements View.OnClickListener 
         mAdapter.removeAll();
         for (int idx = 0; idx < 8; idx++) {
             ContentData data = new ContentData();
-            data.thIMG = DefineTest.ARR_IMG2[idx];
+            //data.thIMG = DefineTest.ARR_IMG2[idx];
             mAdapter.add(data);
         }
     }

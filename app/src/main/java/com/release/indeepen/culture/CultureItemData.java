@@ -3,6 +3,7 @@ package com.release.indeepen.culture;
 import android.graphics.drawable.Drawable;
 
 import com.release.indeepen.content.ContentData;
+import com.release.indeepen.user.UserData;
 
 import java.util.List;
 
@@ -12,6 +13,10 @@ import java.util.List;
 public class CultureItemData extends ContentData {
  //   public String username;
 //    public String uploadtime;
+    public CultureItemData(){
+        mUserData = new UserData();
+    }
+
     public Drawable feeimage;
     public Drawable ingimage;
     public String title;

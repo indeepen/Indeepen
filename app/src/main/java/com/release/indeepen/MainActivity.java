@@ -20,6 +20,7 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.release.indeepen.blog.BlogFragment;
+import com.release.indeepen.blog.BlogMainFragment;
 import com.release.indeepen.content.art.detail.ContentDetailImageFragment;
 import com.release.indeepen.content.art.detail.ContentDetailYoutubeFragment;
 import com.release.indeepen.content.art.singleList.ContentSingListFragment;
@@ -202,10 +203,7 @@ public class MainActivity extends AppCompatActivity { //implements CallbackListe
                 fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab) fragment).getContainer(), new ContentSingListFragment()).commitAllowingStateLoss();
                 break;
             case DefineContentType.TO_BLOG: {
-                //fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab) fragment).getContainer(), new BlogMainFragment()).commitAllowingStateLoss();
-                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab) fragment).getContainer(), new ContentDetailYoutubeFragment()).commitAllowingStateLoss();
-
-
+                fragment.getChildFragmentManager().beginTransaction().addToBackStack(null).replace(((MainTab) fragment).getContainer(), new BlogMainFragment()).commitAllowingStateLoss();
                 break;
             }
             case DefineContentType.TO_FAN_LIST: {
